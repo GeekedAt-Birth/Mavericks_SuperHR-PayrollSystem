@@ -12,7 +12,7 @@ public class User_Mavericks {
 	private String username;
 	private String email;
 	private String password;
-	private String confirm_password; //to compare with password if it's matched
+	private String confirm_password; // to compare with password if it's matched
 	private boolean isAdmin; // for every user it will be false, for the admin we will manually make it true
 
 	public Integer getId() {
