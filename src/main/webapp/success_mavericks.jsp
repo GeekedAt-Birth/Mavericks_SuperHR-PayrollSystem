@@ -5,6 +5,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/signup.css" rel="stylesheet">
+<script src="/js/jquery-1.11.1.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 </head>
 <body>

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Show Students</title>
+<title>Registration</title>
 <link href="/css/bootstrap.min.css" rel="stylesheet">
 <link href="/css/signup.css" rel="stylesheet">
 <script src="/js/jquery-1.11.1.min.js"></script>
