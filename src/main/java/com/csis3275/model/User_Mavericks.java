@@ -1,5 +1,7 @@
 package com.csis3275.model;
 
+import java.util.Set;
+
 import javax.persistence.*;
 
 @Entity
@@ -14,7 +16,10 @@ public class User_Mavericks {
 	private String password;
 	private String confirm_password; // to compare with password if it's matched
 	private boolean isAdmin; // for every user it will be false, for the admin we will manually make it true
-
+	
+	@ManyToMany
+	private Set<JobPosition_Mavericks> roles;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -61,6 +66,14 @@ public class User_Mavericks {
 
 	public void setAdmin(boolean isAdmin) {
 		this.isAdmin = isAdmin;
+	}
+
+	public Set<JobPosition_Mavericks> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<JobPosition_Mavericks> roles) {
+		this.roles = roles;
 	}
 
 	@Override
