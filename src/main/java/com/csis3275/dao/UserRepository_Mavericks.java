@@ -7,4 +7,5 @@ import com.csis3275.model.User_Mavericks;
 public interface UserRepository_Mavericks extends JpaRepository<User_Mavericks, Integer>{
 	
 	User_Mavericks findByUsername(String username);
+	User_Mavericks findById(int id);
 }
