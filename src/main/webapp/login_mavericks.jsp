@@ -12,7 +12,7 @@
 <script src="/js/bootstrap.min.js"></script>
 </head>
 <body class="text-center">
-	<form class="form-login" method="post" action="login">
+	<form class="form-signin" method="post" action="login">
 		<h1 class="h3 mb-3 font-weight-normal">Login</h1>
 		
 		<c:if test="${error!= null}">
@@ -22,10 +22,10 @@
 		</c:if>
 		
 		<label for="inputUsername" class="sr-only">Username</label> 
-		<input type="text" id="inputUsername" name="username" class="form-control" placeholder="Username" required autofocus> 
+		<input type="text" id="username" name="username" class="form-control" placeholder="Username" required autofocus> 
 		
 		<label for="inputPassword" class="sr-only">Password</label> 
-		<input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+		<input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
 		
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
 		<p class="mt-5 mb-3 text-muted">&copy; Mavericks-2020</p>

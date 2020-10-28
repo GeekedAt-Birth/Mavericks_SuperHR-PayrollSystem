@@ -2,12 +2,12 @@ package com.csis3275.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.csis3275.dao.UserRepository_Mavericks;
 import com.csis3275.model.User_Mavericks;
@@ -18,28 +18,29 @@ public class LoginController_Mavericks {
 	@Autowired
 	UserRepository_Mavericks userRepo;
 
-	@RequestMapping(value={"/", "/login"}, method = RequestMethod.GET)
+	@RequestMapping(value = { "/", "/login" }, method = RequestMethod.GET)
 	public String login(ModelMap model) {
 		model.addAttribute("msg", "Login");
 		return "login_mavericks";
 	}
 
-	@RequestMapping(value="/login", method = RequestMethod.POST)
-	public String submit(Model model, @ModelAttribute("login") User_Mavericks login, User_Mavericks user, BindingResult result) {
+	@PostMapping("/login")
+	public ModelAndView submit(User_Mavericks user, BindingResult result) {
+		ModelAndView login = new ModelAndView("login_mavericks");
 
-		if (result.hasErrors()) {
-			model.addAttribute("error", "Please Login");
-			return "login_mavericks";
+		if (result.hasErrors())
+			return login;
+		
+		if (userRepo.findByUsernameAndPassword(user.getUsername(), user.getPassword()) != null) {
+			if (userRepo.findByUsername(user.getUsername()).isAdmin())
+				login.setViewName("admin_mavericks");
+			else
+				login.setViewName("employee_mavericks");
+		} else {
+			login.addObject("error", "Invalid Credentials");
+			return login;
 		}
 		
-		if (userRepo.findById(login.getId()) != null && user.getPassword().equals(login.getPassword())) {
-			if (user.isAdmin())
-				return "admin_mavericks";
-			else
-				return "employee_mavericks";
-		} else {
-			model.addAttribute("error", "Invalid Details - Please Try Again");
-			return "login_mavericks";
-		}
+		return login;
 	}
 }

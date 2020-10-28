@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>For testing purposes until future iterations</h1>
+	<h1>Employee Page</h1>
+	<h3>For testing purposes until future iterations</h3>
 </body>
 </html>
