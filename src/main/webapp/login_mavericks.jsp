@@ -21,6 +21,12 @@
 			</div>
 		</c:if>
 		
+		<c:if test="${message!= null}">
+			<div class="alert alert-primary" role="alert">
+				${message}
+			</div>
+		</c:if>
+		
 		<label for="inputUsername" class="sr-only">Username</label> 
 		<input type="text" id="username" name="username" class="form-control" placeholder="Username" required autofocus> 
 		
