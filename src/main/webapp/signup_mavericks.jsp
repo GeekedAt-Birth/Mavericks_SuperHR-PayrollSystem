@@ -13,7 +13,7 @@
 </head>
 <body class="text-center">
 	<form class="form-signin" method="post" action="register">
-		<h1 class="h3 mb-3 font-weight-normal">Register Here</h1>
+		<h1 class="h3 mb-3 font-weight-normal">Register Employee</h1>
 		
 		<c:if test="${error!= null}">
 			<div class="alert alert-danger" role="alert">
