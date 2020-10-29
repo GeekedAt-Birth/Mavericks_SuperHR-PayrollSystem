@@ -34,7 +34,6 @@
 		<input type="password" id="inputConfirmPassword" name="confirm_password" class="form-control" placeholder="Confirm Password" required>
 		
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Signup</button>
-		<p>Already a member? <a href="/login">Login here</a></p>
 		<p class="mt-5 mb-3 text-muted">&copy; Mavericks-2020</p>
 	</form>	
 </html>

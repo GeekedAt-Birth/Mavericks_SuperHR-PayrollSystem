@@ -34,7 +34,6 @@
 		<input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
 		
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
-		<p>Not a member? <a href="/register">Register here</a></p>
 		<p class="mt-5 mb-3 text-muted">&copy; Mavericks-2020</p>
 	</form>	
 </html>
