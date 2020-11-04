@@ -8,8 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "job")
-public class JobPosition_Mavericks {
+@Table(name = "jobs_mavericks")
+public class Jobs_Mavericks {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

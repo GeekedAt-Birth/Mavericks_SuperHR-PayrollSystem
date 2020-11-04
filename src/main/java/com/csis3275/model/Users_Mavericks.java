@@ -3,8 +3,8 @@ package com.csis3275.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user")
-public class User_Mavericks {
+@Table(name = "users_mavericks")
+public class Users_Mavericks {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;

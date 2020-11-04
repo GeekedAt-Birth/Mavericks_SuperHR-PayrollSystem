@@ -13,35 +13,35 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.csis3275.dao.UserRepository_Mavericks;
-import com.csis3275.dao.JobPositionRepository_Mavericks;
-import com.csis3275.model.User_Mavericks;
-import com.csis3275.model.JobPosition_Mavericks;
+import com.csis3275.dao.UsersRepository_Mavericks;
+import com.csis3275.dao.JobsRepository_Mavericks;
+import com.csis3275.model.Users_Mavericks;
+import com.csis3275.model.Jobs_Mavericks;
 
 @Controller
 public class RegistrationController_Mavericks {
 	@Autowired
-	UserRepository_Mavericks userRepo;
+	UsersRepository_Mavericks userRepo;
 	
 	@Autowired
-	JobPositionRepository_Mavericks jobRepo;
+	JobsRepository_Mavericks jobRepo;
 	
 	@RequestMapping("/register")
 	public String signup(ModelMap model) {
-		User_Mavericks user = new User_Mavericks();
+		Users_Mavericks user = new Users_Mavericks();
 		model.addAttribute("user", user);
 		return "signup_mavericks";
 	}
 	
 	@PostMapping("/register")
-	public ModelAndView addUser(User_Mavericks user,BindingResult result) {
+	public ModelAndView addUser(Users_Mavericks user,BindingResult result) {
 		ModelAndView mv = new ModelAndView("signup_mavericks");
 		
 		if (result.hasErrors()) {
 			return mv;
 		}
 		
-		User_Mavericks userCheck = userRepo.findByUsername(user.getUsername());
+		Users_Mavericks userCheck = userRepo.findByUsername(user.getUsername());
 		if (userCheck != null) {
 			mv.addObject("error", "Username already exists");
 			return mv;
@@ -58,8 +58,8 @@ public class RegistrationController_Mavericks {
 	}
 	
 	@ModelAttribute("jobs")
-	public List<JobPosition_Mavericks> initializeJobs(){
-		List<JobPosition_Mavericks> jobs = jobRepo.findAll();
+	public List<Jobs_Mavericks> initializeJobs(){
+		List<Jobs_Mavericks> jobs = jobRepo.findAll();
 		return jobs;
 	}
 }
