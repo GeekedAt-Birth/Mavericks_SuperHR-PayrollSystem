@@ -1,22 +1,30 @@
 package com.csis3275.controller;
 
-import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.csis3275.dao.UserRepository_Mavericks;
+import com.csis3275.dao.JobPositionRepository_Mavericks;
 import com.csis3275.model.User_Mavericks;
+import com.csis3275.model.JobPosition_Mavericks;
 
 @Controller
 public class RegistrationController_Mavericks {
 	@Autowired
 	UserRepository_Mavericks userRepo;
+	
+	@Autowired
+	JobPositionRepository_Mavericks jobRepo;
 	
 	@RequestMapping("/register")
 	public String signup(ModelMap model) {
@@ -42,11 +50,16 @@ public class RegistrationController_Mavericks {
 			mv.addObject("error", "Password did not match");
 			return mv;
 		}
-
 		userRepo.save(user);
 		mv.addObject("message", "We have created your account successfully.");
 		mv.setViewName("success_mavericks");
 		
 		return mv;
+	}
+	
+	@ModelAttribute("jobs")
+	public List<JobPosition_Mavericks> initializeJobs(){
+		List<JobPosition_Mavericks> jobs = jobRepo.findAll();
+		return jobs;
 	}
 }
