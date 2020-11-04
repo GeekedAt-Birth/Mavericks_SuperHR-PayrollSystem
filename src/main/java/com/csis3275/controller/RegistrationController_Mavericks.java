@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.csis3275.dao.UsersRepository_Mavericks;
+import com.csis3275.dao.UserRepository_Mavericks;
 import com.csis3275.dao.JobsRepository_Mavericks;
 import com.csis3275.model.Users_Mavericks;
 import com.csis3275.model.Jobs_Mavericks;
@@ -21,7 +21,7 @@ import com.csis3275.model.Jobs_Mavericks;
 @Controller
 public class RegistrationController_Mavericks {
 	@Autowired
-	UsersRepository_Mavericks userRepo;
+	UserRepository_Mavericks userRepo;
 	
 	@Autowired
 	JobsRepository_Mavericks jobRepo;

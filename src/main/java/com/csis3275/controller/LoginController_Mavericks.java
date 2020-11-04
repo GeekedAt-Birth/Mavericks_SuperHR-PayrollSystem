@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.csis3275.dao.UsersRepository_Mavericks;
+import com.csis3275.dao.UserRepository_Mavericks;
 import com.csis3275.model.Users_Mavericks;
 
 @Controller
 public class LoginController_Mavericks {
 
 	@Autowired
-	UsersRepository_Mavericks userRepo;
+	UserRepository_Mavericks userRepo;
 
 	@RequestMapping(value = { "/", "/login" }, method = RequestMethod.GET)
 	public String login(ModelMap model) {
