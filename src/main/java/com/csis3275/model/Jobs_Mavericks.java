@@ -8,15 +8,15 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "job")
-public class JobPosition_Mavericks {
+@Table(name = "jobs_mavericks")
+public class Jobs_Mavericks {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public int id;
 	public String title;
 	public double salaryPerDay;
-	public int daysPerPayPeriod;
+	public int payPeriod;
 	
 	public int getId() {
 		return id;
@@ -37,9 +37,9 @@ public class JobPosition_Mavericks {
 		this.salaryPerDay = salaryPerDay;
 	}
 	public int getDaysPerPayPeriod() {
-		return daysPerPayPeriod;
+		return payPeriod;
 	}
-	public void setDaysPerPayPeriod(int daysPerPayPeriod) {
-		this.daysPerPayPeriod = daysPerPayPeriod;
+	public void setDaysPerPayPeriod(int payPeriod) {
+		this.payPeriod = payPeriod;
 	}
 }
