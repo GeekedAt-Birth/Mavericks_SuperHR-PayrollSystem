@@ -12,7 +12,7 @@
 <script src="/js/bootstrap.min.js"></script>
 </head>
 <body class="text-center">
-	<form class="form-signin" method="post" action="login">
+	<form class="form-signin" method="post" action="/">
 		<h1 class="h3 mb-3 font-weight-normal">Login</h1>
 		
 		<c:if test="${error!= null}">
