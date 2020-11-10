@@ -8,4 +8,5 @@ public interface UserRepository_Mavericks extends JpaRepository<Users_Mavericks,
 	
 	Users_Mavericks findByUsername(String username);
 	Users_Mavericks findByUsernameAndPassword(String username, String password);
+	Users_Mavericks findById(int id);
 }

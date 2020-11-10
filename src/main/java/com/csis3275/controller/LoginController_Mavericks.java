@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import javax.servlet.http.HttpSession;
 
 import com.csis3275.dao.UserRepository_Mavericks;
 import com.csis3275.model.Users_Mavericks;
@@ -25,17 +26,22 @@ public class LoginController_Mavericks {
 	}
 
 	@PostMapping("/login")
-	public ModelAndView submit(Users_Mavericks user, BindingResult result) {
+	public ModelAndView submit(Users_Mavericks user, BindingResult result,HttpSession session) {
 		ModelAndView login = new ModelAndView("login_mavericks");
 
 		if (result.hasErrors())
 			return login;
 		
-		if (userRepo.findByUsernameAndPassword(user.getUsername(), user.getPassword()) != null) {
+		Users_Mavericks newUser = userRepo.findByUsernameAndPassword(user.getUsername(), user.getPassword()); 
+		if ( newUser != null) {
+			session.setAttribute("LOGGED_IN_USER_ID",newUser.getId());
 			if (userRepo.findByUsername(user.getUsername()).isAdmin())
 				login.setViewName("admin_mavericks");
 			else
-				login.setViewName("employee_mavericks");
+			{
+				ModelAndView modelAndView =  new ModelAndView("redirect:/employee_profile_mavericks");
+				return modelAndView;
+			}
 		} else {
 			login.addObject("error", "Invalid Credentials");
 			return login;

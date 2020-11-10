@@ -16,7 +16,7 @@ public class Jobs_Mavericks {
 	public int id;
 	public String title;
 	public double salaryPerDay;
-	public int daysPerPayPeriod;
+	public int payPeriod;
 	
 	public int getId() {
 		return id;
@@ -37,9 +37,9 @@ public class Jobs_Mavericks {
 		this.salaryPerDay = salaryPerDay;
 	}
 	public int getDaysPerPayPeriod() {
-		return daysPerPayPeriod;
+		return payPeriod;
 	}
-	public void setDaysPerPayPeriod(int daysPerPayPeriod) {
-		this.daysPerPayPeriod = daysPerPayPeriod;
+	public void setDaysPerPayPeriod(int payPeriod) {
+		this.payPeriod = payPeriod;
 	}
 }
