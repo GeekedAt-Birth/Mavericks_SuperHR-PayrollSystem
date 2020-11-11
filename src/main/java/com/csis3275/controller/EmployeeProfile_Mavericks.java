@@ -35,7 +35,7 @@ public class EmployeeProfile_Mavericks {
 		}
 		int userId = (int) session.getAttribute("LOGGED_IN_USER_ID");
 		Users_Mavericks newUser = userRepo.findById(userId);
-		Jobs_Mavericks job = jobRepo.findById(userId);
+		Jobs_Mavericks job = jobRepo.findById(newUser.getJobId());
 		mv.addObject("user", newUser);
 		mv.addObject("job",job);
 		
