@@ -22,13 +22,15 @@
 		</form>
 	</nav>
 	<div class="container">
-		<form:form class="form-update" action="updateEmployeeInfo" method="post" modelAttribute="pay">
-			<h1 class="h3 mb-3 font-weight-normal">${user.firstName} ${user.lastName}</h1>
+		<form:form class="form-update" action="updateEmployeeInfo"
+			method="post" modelAttribute="pay">
+			<h1 class="h3 mb-3 font-weight-normal">${user.firstName}
+				${user.lastName}</h1>
 			<h1 class="h3 mb-3 font-weight-normal">Employee ID: ${user.id}</h1>
 			<table class="table table-striped table-bordered">
 				<tr>
 					<td>Pay Period</td>
-					<td><input type="date" value="${pay.startDate}" name="startDate" id="inputStartDate"/> - <input type="date" value="${pay.endDate}" name="endDate" id="inputEndDate"/></td>
+					<td>${pay.startDate} - ${pay.endDate}</td>
 				</tr>
 				<tr>
 					<td>Job Title</td>
@@ -40,17 +42,19 @@
 				</tr>
 				<tr>
 					<td><label for="inputSickDays">Sick Days</label></td>
-					<td><input type="text" value="${pay.sickDays}" name="sickDays" id="inputSickDays" /> Days</td>
+					<td><input type="text" value="${pay.sickDays}" name="sickDays"
+						id="inputSickDays" /> Days</td>
 				</tr>
 				<tr>
 					<td><label for="inputHolidays">Holidays</label></td>
-					<td><input type="text" value="${pay.holidays}" name="holidays" id="inputHolidays" /> Days</td>
+					<td><input type="text" value="${pay.holidays}" name="holidays"
+						id="inputHolidays" /> Days</td>
 				</tr>
 			</table>
 			<button type="submit" class="btn btn-primary">Save</button>
 		</form:form>
 	</div>
-	
+
 	<div class="mx-auto">
 		<p class="mt-5 mb-3 text-muted text-center">&copy; Mavericks-2020</p>
 	</div>
