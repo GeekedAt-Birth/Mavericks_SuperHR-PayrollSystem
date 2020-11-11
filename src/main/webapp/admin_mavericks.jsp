@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -41,6 +42,10 @@
 				</c:forEach>
 			</table>
 		</form>
+	</div>
+		
+	<div class="mx-auto">
+		<p class="mt-5 mb-3 text-muted text-center">&copy; Mavericks-2020</p>
 	</div>
 </body>
 </html>
