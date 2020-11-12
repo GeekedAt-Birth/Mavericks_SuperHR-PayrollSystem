@@ -18,6 +18,15 @@ public class Jobs_Mavericks {
 	public double salaryPerDay;
 	public int payPeriod;
 	
+	public Jobs_Mavericks() {
+		// default constructor
+	}
+	public Jobs_Mavericks(String title, double salaryPerDay, int payPeriod) {
+		this.title = title;
+		this.salaryPerDay = salaryPerDay;
+		this.payPeriod = payPeriod;
+	}
+	
 	public int getId() {
 		return id;
 	}

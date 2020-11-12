@@ -6,43 +6,36 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Admin Page</title>
+<title>Update Job</title>
 <link href="/css/bootstrap.min.css" rel="stylesheet">
 <script src="/js/jquery-1.11.1.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-light bg-light">
-		<a class="nav-brand" href="/register">Register Employee</a>
-		<a class="nav-brand" href="/jobs">Manage Jobs</a>
+		<a class="nav-brand" href="/jobs">Back to Jobs Page</a>
 		<form class="form-signin" action="logout">
 			<div class="text-right mb-3">
 				<button class="btn btn-primary btn-sm " type="submit">Logout</button>
 			</div>
 		</form>
 	</nav>
-	<div class="container">
-		<form action="/employee" method="post">
-			<h1 class="h3 mb-3 font-weight-normal">Admin Profile</h1>
+		<div class="container">
+		<form:form action="updateJob" method="POST" modelAttribute="job">
+		
+			<h1 class="h3 mb-3 font-weight-normal">Update Job ${job.title}</h1>
 			<table class="table table-striped table-bordered">
 				<tr>
-					<td>Employee ID</td>
-					<td>First Name</td>
-					<td>Last Name</td>
-					<td>Job ID</td>
-					<td>Manage</td>
+					<td>Title</td>
+					<td><input type="text" value="${job.title}" name="title" id="title"/></td>
 				</tr>
-				<c:forEach var="user" items="${users}">
-					<tr>
-						<td><a href="/employee?userId=${user.id}">${user.id}</a></td>
-						<td>${user.firstName}</td>
-						<td>${user.lastName}</td>
-						<td>${user.jobId}</td>
-						<td>Manage URL</td>
-					</tr>
-				</c:forEach>
+				<tr>
+					<td>Salary Per Day</td>
+					<td><input type="text" value="${job.salaryPerDay}" name="salaryPerDay" id="salaryPerDay"/></td>
+				</tr>
 			</table>
-		</form>
+			<button type="submit" class="btn btn-primary">Save</button>
+		</form:form>
 	</div>
 		
 	<div class="mx-auto">
