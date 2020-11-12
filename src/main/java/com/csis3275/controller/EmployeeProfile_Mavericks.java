@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.csis3275.dao.JobsRepository_Mavericks;
+import com.csis3275.dao.PayrollDao_Mavericks;
 import com.csis3275.dao.UserRepository_Mavericks;
 import com.csis3275.model.Jobs_Mavericks;
+import com.csis3275.model.Pay_Mavericks;
 import com.csis3275.model.Users_Mavericks;
 
 @Controller
@@ -23,6 +25,9 @@ public class EmployeeProfile_Mavericks {
 	@Autowired
 	JobsRepository_Mavericks jobRepo;
 	
+	@Autowired
+	PayrollDao_Mavericks payRepo;
+	
 	@RequestMapping("/employee_profile_mavericks")
 	public ModelAndView showEmployeeProfile(Users_Mavericks user,BindingResult result,HttpSession session) {
 		if(session.getAttribute("LOGGED_IN_USER_ID") == null) {
@@ -33,27 +38,14 @@ public class EmployeeProfile_Mavericks {
 		if (result.hasErrors()) {
 			return mv;
 		}
+		
 		int userId = (int) session.getAttribute("LOGGED_IN_USER_ID");
 		Users_Mavericks newUser = userRepo.findById(userId);
 		Jobs_Mavericks job = jobRepo.findById(newUser.getJobId());
+		Pay_Mavericks pay = payRepo.findByEmployeeID(userId);
 		mv.addObject("user", newUser);
 		mv.addObject("job",job);
-		
-		return mv;
-	}
-	
-	@PostMapping("/updateEmployeeProfile")
-	public ModelAndView updateProfile(Users_Mavericks user,BindingResult result,HttpSession session) {
-		ModelAndView mv = new ModelAndView("redirect:/employee_profile_mavericks");
-
-		int userId = (int) session.getAttribute("LOGGED_IN_USER_ID");
-		Users_Mavericks newUser = userRepo.findById(userId);
-		newUser.setEmail(user.getEmail());
-		newUser.setFirstName(user.getFirstName());
-		newUser.setLastName(user.getLastName());
-		newUser.setPhoneNumber(user.getPhoneNumber());
-		
-		userRepo.save(newUser);
+		mv.addObject("pay",pay);
 		
 		return mv;
 	}
