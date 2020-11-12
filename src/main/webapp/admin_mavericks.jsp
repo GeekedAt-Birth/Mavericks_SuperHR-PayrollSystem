@@ -21,7 +21,7 @@
 		</form>
 	</nav>
 	<div class="container">
-		<form action="/employee" method="post">
+		
 			<h1 class="h3 mb-3 font-weight-normal">Admin Profile</h1>
 			<c:if test="${ message != null }" >
 				<div class="alert alert-success" role="alert">${message}</div>
@@ -41,12 +41,12 @@
 						<td>${user.firstName}</td>
 						<td>${user.lastName}</td>
 						<td>${user.jobId}</td>
-						<td><a href="/updateEmployee/?userId=${user.id}">Update</a></td>
-						<td><a href="/deleteEmployee/?userId=${user.id}">Delete</a></td>
+						<td><a href="/updateEmployeeInformation?userId=${user.id}">Update</a></td>
+						<td><a href="/deleteEmployee?userId=${user.id}">Delete</a></td>
 					</tr>
 				</c:forEach>
 			</table>
-		</form>
+		
 	</div>
 		
 	<div class="mx-auto">
