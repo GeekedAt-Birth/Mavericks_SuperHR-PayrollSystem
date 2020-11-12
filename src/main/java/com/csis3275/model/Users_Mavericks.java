@@ -19,6 +19,22 @@ public class Users_Mavericks {
 	private boolean isAdmin; // for every user it will be false, for the admin we will manually make it true
 	private int jobId;
 	
+	public Users_Mavericks() {
+		//default
+	}
+	public Users_Mavericks(String username,String email, String firstName, String lastName, String phoneNumber,String password,String confirm_password,boolean isAdmin,int jobId) {
+		this.username = username;
+		this.email = email;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.phoneNumber = phoneNumber;
+		this.password = password;
+		this.confirm_password = confirm_password;
+		this.isAdmin = isAdmin;
+		this.jobId = jobId;
+	}
+	
+	
 	public Integer getId() {
 		return id;
 	}
