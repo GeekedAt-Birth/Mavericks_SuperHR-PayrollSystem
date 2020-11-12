@@ -22,15 +22,19 @@
 		</form>
 	</nav>
 	<div class="container">
-		<form action="/employee" method="post">
+		
 			<h1 class="h3 mb-3 font-weight-normal">Admin Profile</h1>
+			<c:if test="${ message != null }" >
+				<div class="alert alert-success" role="alert">${message}</div>
+			 </c:if>
 			<table class="table table-striped table-bordered">
 				<tr>
 					<td>Employee ID</td>
 					<td>First Name</td>
 					<td>Last Name</td>
 					<td>Job ID</td>
-					<td>Manage</td>
+					<td>Update</td>
+					<td>Delete</td>
 				</tr>
 				<c:forEach var="user" items="${users}">
 					<tr>
@@ -38,11 +42,12 @@
 						<td>${user.firstName}</td>
 						<td>${user.lastName}</td>
 						<td>${user.jobId}</td>
-						<td>Manage URL</td>
+						<td><a href="/updateEmployeeInformation?userId=${user.id}">Update</a></td>
+						<td><a href="/deleteEmployee?userId=${user.id}">Delete</a></td>
 					</tr>
 				</c:forEach>
 			</table>
-		</form>
+		
 	</div>
 		
 	<div class="mx-auto">
