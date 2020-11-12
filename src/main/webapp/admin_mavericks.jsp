@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -19,9 +20,32 @@
 			</div>
 		</form>
 	</nav>
-	<div class = "container">
-	<h1>Admin Page</h1>
-	<h3>For testing purposes until future iterations</h3>
+	<div class="container">
+		<form action="/employee" method="post">
+			<h1 class="h3 mb-3 font-weight-normal">Admin Profile</h1>
+			<table class="table table-striped table-bordered">
+				<tr>
+					<td>Employee ID</td>
+					<td>First Name</td>
+					<td>Last Name</td>
+					<td>Job ID</td>
+					<td>Manage</td>
+				</tr>
+				<c:forEach var="user" items="${users}">
+					<tr>
+						<td><a href="/employee?userId=${user.id}">${user.id}</a></td>
+						<td>${user.firstName}</td>
+						<td>${user.lastName}</td>
+						<td>${user.jobId}</td>
+						<td>Manage URL</td>
+					</tr>
+				</c:forEach>
+			</table>
+		</form>
+	</div>
+		
+	<div class="mx-auto">
+		<p class="mt-5 mb-3 text-muted text-center">&copy; Mavericks-2020</p>
 	</div>
 </body>
 </html>

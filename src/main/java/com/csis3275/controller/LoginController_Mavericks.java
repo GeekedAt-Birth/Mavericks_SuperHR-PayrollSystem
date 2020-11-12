@@ -25,7 +25,7 @@ public class LoginController_Mavericks {
 		return "login_mavericks";
 	}
 
-	@PostMapping("/login")
+	@PostMapping("/")
 	public ModelAndView submit(Users_Mavericks user, BindingResult result,HttpSession session) {
 		ModelAndView login = new ModelAndView("login_mavericks");
 
@@ -36,7 +36,10 @@ public class LoginController_Mavericks {
 		if ( newUser != null) {
 			session.setAttribute("LOGGED_IN_USER_ID",newUser.getId());
 			if (userRepo.findByUsername(user.getUsername()).isAdmin())
-				login.setViewName("admin_mavericks");
+			{
+				ModelAndView mv =  new ModelAndView("redirect:/admin_mavericks");
+				return mv;
+			}
 			else
 			{
 				ModelAndView modelAndView =  new ModelAndView("redirect:/employee_profile_mavericks");
@@ -46,7 +49,5 @@ public class LoginController_Mavericks {
 			login.addObject("error", "Invalid Credentials");
 			return login;
 		}
-		
-		return login;
 	}
 }
