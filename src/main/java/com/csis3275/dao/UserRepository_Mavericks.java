@@ -15,4 +15,7 @@ public interface UserRepository_Mavericks extends JpaRepository<Users_Mavericks,
 
 	@Query(value="SELECT id, confirm_password, password, phone_number, username, is_admin, email, first_name, last_name, job_id FROM Users_Mavericks where is_admin = false", nativeQuery = true)
 	List<Users_Mavericks> findAllEmployees();
+	
+	Users_Mavericks deleteById(int id);
+	
 }
