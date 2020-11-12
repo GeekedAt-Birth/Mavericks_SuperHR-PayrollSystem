@@ -38,6 +38,7 @@ public class EmployeeProfile_Mavericks {
 		if (result.hasErrors()) {
 			return mv;
 		}
+		
 		int userId = (int) session.getAttribute("LOGGED_IN_USER_ID");
 		Users_Mavericks newUser = userRepo.findById(userId);
 		Jobs_Mavericks job = jobRepo.findById(newUser.getJobId());
