@@ -21,12 +21,15 @@
 			</div>
 		</form>
 	</nav>
+	<br>
 	<div class="container">
-		<form:form class="form-update" action="updateEmployeeInfo"
-			method="post" modelAttribute="pay">
+		<form:form action="updateEmployeeInfo" method="post" modelAttribute="pay">
 			<h1 class="h3 mb-3 font-weight-normal">${user.firstName}
 				${user.lastName}</h1>
 			<h1 class="h3 mb-3 font-weight-normal">Employee ID: ${user.id}</h1>
+			
+			<input type="hidden" name="id" id="jobId" value="${job.id}" />
+			<input type="hidden" name="payPeriod" id="jobPayPeriod"	value="${job.payPeriod}" />
 			<table class="table table-striped table-bordered">
 				<tr>
 					<td>Pay Period</td>

@@ -13,19 +13,19 @@
 </head>
 <body>
 	<nav class="navbar navbar-light bg-light">
-		<a class="nav-brand" href="/admin_mavericks">Back to Admin Page</a> 
-		<a class="nav-brand" href="/register">Register Employee</a>
+		<a class="nav-brand" href="/admin_mavericks">Back to Admin Page</a> <a
+			class="nav-brand" href="/register">Register Employee</a>
 		<form class="form-signin" action="logout">
 			<div class="text-right mb-3">
 				<button class="btn btn-primary btn-sm " type="submit">Logout</button>
 			</div>
 		</form>
 	</nav>
-	
+
 	<c:if test="${message!= null}">
-		<div class="alert alert-danger" role="alert">${message}</div>
+		<div class="alert alert-success" role="alert">${message}</div>
 	</c:if>
-	
+<br>
 	<div class="container">
 		<form action="/editJob" method="post">
 			<h1 class="h3 mb-3 font-weight-normal">Jobs</h1>
@@ -49,22 +49,22 @@
 			</table>
 		</form>
 	</div>
-	
-	<h1 class="h3 mb-3 font-weight-normal">Add Job</h1>
-	<form:form action="/createJob" method="post" modelAttribute="job">
-		<table class="table table-striped table-bordered">
-			<tr>
-				<td>Title</td>
-				<td><form:input type="text" path="title"/></td>
-			</tr>
-			<tr>
-				<td>SalaryPerDay</td>
-				<td><form:input type="text" path="salaryPerDay"/>/day</td>
-			</tr>
-		</table>
-		<form:button type="submit" class="btn btn-primary">Save</form:button>
-	</form:form>
-	
+	<div class="container">
+		<h1 class="h3 mb-3 font-weight-normal">Add Job</h1>
+		<form:form action="/createJob" method="post" modelAttribute="job">
+			<table class="table table-striped table-bordered">
+				<tr>
+					<td>Title</td>
+					<td><form:input type="text" path="title" /></td>
+				</tr>
+				<tr>
+					<td>SalaryPerDay</td>
+					<td><form:input type="text" path="salaryPerDay" />/day</td>
+				</tr>
+			</table>
+			<form:button type="submit" class="btn btn-primary">Save</form:button>
+		</form:form>
+	</div>
 	<div class="mx-auto">
 		<p class="mt-5 mb-3 text-muted text-center">&copy; Mavericks-2020</p>
 	</div>

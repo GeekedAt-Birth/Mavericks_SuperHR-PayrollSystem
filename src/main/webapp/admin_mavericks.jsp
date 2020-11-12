@@ -13,8 +13,8 @@
 </head>
 <body>
 	<nav class="navbar navbar-light bg-light">
-		<a class="nav-brand" href="/register">Register Employee</a>
-		<a class="nav-brand" href="/jobs">Manage Jobs</a>
+		<a class="nav-brand" href="/register">Register Employee</a> <a
+			class="nav-brand" href="/jobs">Manage Jobs</a>
 		<form class="form-signin" action="logout">
 			<div class="text-right mb-3">
 				<button class="btn btn-primary btn-sm " type="submit">Logout</button>
@@ -22,34 +22,31 @@
 		</form>
 	</nav>
 	<div class="container">
-		
-			<h1 class="h3 mb-3 font-weight-normal">Admin Profile</h1>
-			<c:if test="${ message != null }" >
-				<div class="alert alert-success" role="alert">${message}</div>
-			 </c:if>
-			<table class="table table-striped table-bordered">
+		<br>
+		<h1 class="h3 mb-3 font-weight-normal">Admin Profile</h1>
+		<table class="table table-striped table-bordered">
+			<tr>
+				<td>Employee ID</td>
+				<td>First Name</td>
+				<td>Last Name</td>
+				<td>Job ID</td>
+				<td>Update</td>
+				<td>Delete</td>
+			</tr>
+			<c:forEach var="user" items="${users}">
 				<tr>
-					<td>Employee ID</td>
-					<td>First Name</td>
-					<td>Last Name</td>
-					<td>Job ID</td>
-					<td>Update</td>
-					<td>Delete</td>
+					<td><a href="/employee?userId=${user.id}">${user.id}</a></td>
+					<td>${user.firstName}</td>
+					<td>${user.lastName}</td>
+					<td>${user.jobId}</td>
+					<td><a href="/updateEmployeeInformation?userId=${user.id}">Update</a></td>
+					<td><a href="/deleteEmployee?userId=${user.id}">Delete</a></td>
 				</tr>
-				<c:forEach var="user" items="${users}">
-					<tr>
-						<td><a href="/employee?userId=${user.id}">${user.id}</a></td>
-						<td>${user.firstName}</td>
-						<td>${user.lastName}</td>
-						<td>${user.jobId}</td>
-						<td><a href="/updateEmployeeInformation?userId=${user.id}">Update</a></td>
-						<td><a href="/deleteEmployee?userId=${user.id}">Delete</a></td>
-					</tr>
-				</c:forEach>
-			</table>
-		
+			</c:forEach>
+		</table>
+
 	</div>
-		
+
 	<div class="mx-auto">
 		<p class="mt-5 mb-3 text-muted text-center">&copy; Mavericks-2020</p>
 	</div>

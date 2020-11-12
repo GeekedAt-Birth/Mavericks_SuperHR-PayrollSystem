@@ -14,6 +14,7 @@
 
 <body>
 	<nav class="navbar navbar-light bg-light">
+	<br>
 		<h3>Welcome ${user.username}</h3>
 		<form class="form-signin" method="post" action="logout">
 			<div class="text-right mb-3">

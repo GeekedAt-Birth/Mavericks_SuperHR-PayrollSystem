@@ -2,14 +2,10 @@ package com.csis3275.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,7 +14,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.csis3275.dao.JobsRepository_Mavericks;
 import com.csis3275.dao.UserRepository_Mavericks;
 import com.csis3275.model.Jobs_Mavericks;
-import com.csis3275.model.Pay_Mavericks;
 import com.csis3275.model.Users_Mavericks;
 
 @Controller
@@ -55,7 +50,6 @@ public class ManageEmployeeINFOController_Mavericks {
 	@PostMapping("/updateEmployeeInformation")
 	public ModelAndView updateEmployeeInformation(Users_Mavericks userToUpdate) {
 		ModelAndView mv = new ModelAndView("redirect:/admin_mavericks");
-		System.out.println(userToUpdate);
 
 		userRepo.save(userToUpdate);
 

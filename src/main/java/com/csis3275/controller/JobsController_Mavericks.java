@@ -41,6 +41,7 @@ public class JobsController_Mavericks {
 		
 		List<Jobs_Mavericks> jobs = jobRepo.findAll();		
 		model.addAttribute("jobs", jobs);
+		model.addAttribute("message", "Added Job " + job.getTitle());
 		return mv;
 	}
 	
@@ -54,7 +55,7 @@ public class JobsController_Mavericks {
 	
 	@PostMapping("/updateJob")
 	public String updateJob(Jobs_Mavericks updJob, Model model) {
-		
+		jobRepo.save(updJob);
 
 		List<Jobs_Mavericks> jobs = jobRepo.findAll();		
 		model.addAttribute("jobs", jobs);

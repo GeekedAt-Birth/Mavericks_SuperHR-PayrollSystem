@@ -18,15 +18,6 @@ public class Jobs_Mavericks {
 	public double salaryPerDay;
 	public int payPeriod;
 	
-	public Jobs_Mavericks() {
-		// default constructor
-	}
-	public Jobs_Mavericks(String title, double salaryPerDay, int payPeriod) {
-		this.title = title;
-		this.salaryPerDay = salaryPerDay;
-		this.payPeriod = payPeriod;
-	}
-	
 	public int getId() {
 		return id;
 	}
@@ -45,10 +36,27 @@ public class Jobs_Mavericks {
 	public void setSalaryPerDay(double salaryPerDay) {
 		this.salaryPerDay = salaryPerDay;
 	}
-	public int getDaysPerPayPeriod() {
+	public int getPayPeriod() {
 		return payPeriod;
 	}
-	public void setDaysPerPayPeriod(int payPeriod) {
+	public void setPayPeriod(int payPeriod) {
 		this.payPeriod = payPeriod;
 	}
+	
+	@Override
+	public String toString() {
+		return "Jobs_Mavericks [id=" + id + ", title=" + title + ", salaryPerDay=" + salaryPerDay + ", payPeriod="
+				+ payPeriod + "]";
+	}
+	
+	public Jobs_Mavericks() {
+		//default constructor
+	}
+	
+	public Jobs_Mavericks(String title, double salaryPerDay, int payPeriod) {
+		this.title = title;
+		this.salaryPerDay = salaryPerDay;
+		this.payPeriod = payPeriod;
+	}
+	
 }

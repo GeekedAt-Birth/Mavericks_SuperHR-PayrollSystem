@@ -20,24 +20,30 @@
 			</div>
 		</form>
 	</nav>
-		<div class="container">
+	<div class="container">
 		<form:form action="updateJob" method="POST" modelAttribute="job">
-		
+			<input type="hidden" name="id" id="jobId" value="${job.id}" />
+			<input type="hidden" name="payPeriod" id="jobPayPeriod"
+				value="${job.payPeriod}" />
+			<br>
 			<h1 class="h3 mb-3 font-weight-normal">Update Job ${job.title}</h1>
 			<table class="table table-striped table-bordered">
+
 				<tr>
 					<td>Title</td>
-					<td><input type="text" value="${job.title}" name="title" id="title"/></td>
+					<td><input type="text" value="${job.title}" name="title"
+						id="title" /></td>
 				</tr>
 				<tr>
 					<td>Salary Per Day</td>
-					<td><input type="text" value="${job.salaryPerDay}" name="salaryPerDay" id="salaryPerDay"/></td>
+					<td><input type="text" value="${job.salaryPerDay}"
+						name="salaryPerDay" id="salaryPerDay" /></td>
 				</tr>
 			</table>
 			<button type="submit" class="btn btn-primary">Save</button>
 		</form:form>
 	</div>
-		
+
 	<div class="mx-auto">
 		<p class="mt-5 mb-3 text-muted text-center">&copy; Mavericks-2020</p>
 	</div>

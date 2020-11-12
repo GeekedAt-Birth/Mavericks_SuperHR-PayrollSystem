@@ -2,8 +2,6 @@ package com.csis3275.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,15 +39,13 @@ public class EmployerProfileController_Mavericks {
 	}
 	
 	@RequestMapping("/employee")
-	public String showEmployeeInformation(HttpSession session, @RequestParam int userId, Model model) {
+	public String showEmployeeInformation(@RequestParam int userId, Model model) {
 		
-		Users_Mavericks user = userRepo.findById(userId);
-		Jobs_Mavericks job = jobRepo.findById(user.getJobId());
-		Pay_Mavericks pay = payRepo.findById(userId);
+		Users_Mavericks updUser = userRepo.findById(userId);
+		Jobs_Mavericks job = jobRepo.findById(updUser.getJobId());
+		Pay_Mavericks pay = payRepo.findByEmployeeID(userId);
 		
-		session.setAttribute("CURRENT_EMPLOYEE", user.getId());
-		
-		model.addAttribute("user", user);
+		model.addAttribute("user", updUser);
 		model.addAttribute("job", job);
 		model.addAttribute("pay", pay);
 		
@@ -57,19 +53,17 @@ public class EmployerProfileController_Mavericks {
 	}
 	
 	@PostMapping("/updateEmployeeInfo")
-	public ModelAndView updateEmployeeInfo(HttpSession session, Pay_Mavericks pay) {
+	public ModelAndView updateEmployeeInfo(Users_Mavericks updUser, Pay_Mavericks pay, Model model) {
 		
-		ModelAndView admin = new ModelAndView("redirect:/admin_mavericks");		
+		ModelAndView admin = new ModelAndView("redirect:/admin_mavericks");	
 		
-		int userId = (int) session.getAttribute("CURRENT_EMPLOYEE");
-		
-		Pay_Mavericks updPay = payRepo.findById(userId);
-		updPay.setStartDate(pay.getStartDate());
-		updPay.setEndDate(pay.getEndDate());
+		Pay_Mavericks updPay = payRepo.findByEmployeeID(updUser.getId());
 		updPay.setSickDays(pay.getSickDays());
 		updPay.setHolidays(pay.getHolidays());
 		
 		payRepo.save(updPay);
+		
+		model.addAttribute("message", "Updated Employee ID " + updUser.getId());
 		
 		return admin;
 	}
