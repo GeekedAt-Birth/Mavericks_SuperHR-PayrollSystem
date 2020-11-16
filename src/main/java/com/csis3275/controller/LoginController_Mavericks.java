@@ -12,17 +12,33 @@ import javax.servlet.http.HttpSession;
 
 import com.csis3275.dao.UserRepository_Mavericks;
 import com.csis3275.model.Users_Mavericks;
+import com.csis3275.utils.AuthUtils;
 
 @Controller
 public class LoginController_Mavericks {
 
 	@Autowired
 	UserRepository_Mavericks userRepo;
+	
+	@Autowired
+	private AuthUtils utils;
 
 	@RequestMapping(value = { "/", "/login" }, method = RequestMethod.GET)
-	public String login(ModelMap model) {
-		model.addAttribute("msg", "Login");
-		return "login_mavericks";
+	public ModelAndView login(ModelMap model) {
+		ModelAndView mv = new ModelAndView("login_mavericks");
+		
+		if(!utils.isLoggedIn()) {
+			model.addAttribute("msg", "Login");
+			return mv;
+		}
+		else if(utils.isAdmin()) {
+			mv = new ModelAndView("redirect:/admin_mavericks");
+			return mv;
+		}
+		else {
+			mv = new ModelAndView("redirect:/employee_profile_mavericks");
+			return mv;
+		}
 	}
 
 	@PostMapping("/")
@@ -35,15 +51,14 @@ public class LoginController_Mavericks {
 		Users_Mavericks newUser = userRepo.findByUsernameAndPassword(user.getUsername(), user.getPassword()); 
 		if ( newUser != null) {
 			session.setAttribute("LOGGED_IN_USER_ID",newUser.getId());
-			if (userRepo.findByUsername(user.getUsername()).isAdmin())
-			{
+			if(utils.isAdmin()) {
 				ModelAndView mv =  new ModelAndView("redirect:/admin_mavericks");
 				return mv;
 			}
 			else
 			{
-				ModelAndView modelAndView =  new ModelAndView("redirect:/employee_profile_mavericks");
-				return modelAndView;
+				ModelAndView mv =  new ModelAndView("redirect:/employee_profile_mavericks");
+				return mv;
 			}
 		} else {
 			login.addObject("error", "Invalid Credentials");
