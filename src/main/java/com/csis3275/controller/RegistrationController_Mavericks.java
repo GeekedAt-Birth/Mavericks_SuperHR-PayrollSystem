@@ -1,7 +1,5 @@
 package com.csis3275.controller;
 
-import java.util.ArrayList;
-import java.util.Hashtable;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +15,6 @@ import com.csis3275.dao.UserRepository_Mavericks;
 import com.csis3275.dao.JobsRepository_Mavericks;
 import com.csis3275.model.Users_Mavericks;
 import com.csis3275.utils.AuthUtils;
-
-import antlr.Utils;
 
 import com.csis3275.model.Jobs_Mavericks;
 

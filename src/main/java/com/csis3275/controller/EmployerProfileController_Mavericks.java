@@ -60,7 +60,7 @@ public class EmployerProfileController_Mavericks {
 			mv.setViewName("redirect:/employee_profile_mavericks");
 			return mv;
 		}
-		
+		mv.setViewName("employee_mavericks");
 		Users_Mavericks updUser = userRepo.findById(userId);
 		Jobs_Mavericks job = jobRepo.findById(updUser.getJobId());
 		Pay_Mavericks pay = payRepo.findByEmployeeID(userId);

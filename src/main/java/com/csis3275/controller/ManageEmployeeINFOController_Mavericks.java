@@ -15,6 +15,7 @@ import com.csis3275.dao.JobsRepository_Mavericks;
 import com.csis3275.dao.UserRepository_Mavericks;
 import com.csis3275.model.Jobs_Mavericks;
 import com.csis3275.model.Users_Mavericks;
+import com.csis3275.utils.AuthUtils;
 
 @Controller
 public class ManageEmployeeINFOController_Mavericks {
@@ -23,38 +24,66 @@ public class ManageEmployeeINFOController_Mavericks {
 
 	@Autowired
 	JobsRepository_Mavericks jobRepo;
+	
+	@Autowired
+	AuthUtils utils;
 
 	@RequestMapping("/deleteEmployee")
-	public String deleteEmployee(@RequestParam int userId, Model model) {
+	public ModelAndView deleteEmployee(@RequestParam int userId, Model model,ModelAndView mv) {
+		if(!utils.isLoggedIn()) {
+			mv.setViewName("redirect:/");
+			return mv;
+		}
+		else if(!utils.isAdmin()) {
+			mv.setViewName("redirect:/employee_profile_mavericks");
+			return mv;
+		}
+		
 		userRepo.deleteById(userId);
 
 		List<Users_Mavericks> users = userRepo.findAllEmployees();
 
 		model.addAttribute("users", users);
 		model.addAttribute("message", "Deleted Employee: " + userId);
-
-		return "redirect:/admin_mavericks";
-
+		
+		mv.setViewName("redirect:/admin_mavericks");
+		
+		return mv;
 	}
 
 	@RequestMapping("/updateEmployeeInformation")
-	public String showEmployeeInformation(@RequestParam int userId, Model model) {
-
+	public ModelAndView showEmployeeInformation(@RequestParam int userId, Model model,ModelAndView mv) {
+		if(!utils.isLoggedIn()) {
+			mv.setViewName("redirect:/");
+			return mv;
+		}
+		else if(!utils.isAdmin()) {
+			mv.setViewName("redirect:/employee_profile_mavericks");
+			return mv;
+		}
+		
 		Users_Mavericks userToUpdate = userRepo.findById(userId);
-
 		model.addAttribute("user", userToUpdate);
-
-		return "updateEmployee_mavericks";
+		mv.setViewName("updateEmployee_mavericks");
+		
+		return mv;
 	}
 
 	@PostMapping("/updateEmployeeInformation")
-	public ModelAndView updateEmployeeInformation(Users_Mavericks userToUpdate) {
-		ModelAndView mv = new ModelAndView("redirect:/admin_mavericks");
-
+	public ModelAndView updateEmployeeInformation(Users_Mavericks userToUpdate,ModelAndView mv) {
+		if(!utils.isLoggedIn()) {
+			mv.setViewName("redirect:/");
+			return mv;
+		}
+		else if(!utils.isAdmin()) {
+			mv.setViewName("redirect:/employee_profile_mavericks");
+			return mv;
+		}
+		
+		mv.setViewName("redirect:/admin_mavericks");
 		userRepo.save(userToUpdate);
 
 		return mv;
-
 	}
 
 	@ModelAttribute("jobs")

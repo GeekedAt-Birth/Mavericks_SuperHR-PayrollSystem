@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.csis3275.dao.JobsRepository_Mavericks;
 import com.csis3275.model.Jobs_Mavericks;
+import com.csis3275.utils.AuthUtils;
 
 @Controller
 public class JobsController_Mavericks {
@@ -21,20 +22,42 @@ public class JobsController_Mavericks {
 	@Autowired
 	JobsRepository_Mavericks jobRepo;
 	
+	@Autowired
+	AuthUtils utils;
+	
 	@RequestMapping("/jobs")
-	public String showJobs(ModelMap model) {		
+	public ModelAndView showJobs(ModelMap model,ModelAndView mv) {
+		if(!utils.isLoggedIn()) {
+			mv.setViewName("redirect:/");
+			return mv;
+		}
+		else if(!utils.isAdmin()) {
+			mv.setViewName("redirect:/employee_profile_mavericks");
+			return mv;
+		}
+		
 		Jobs_Mavericks job = new Jobs_Mavericks();
 		model.addAttribute("job", job);
 		
 		List<Jobs_Mavericks> jobs = jobRepo.findAll();		
 		model.addAttribute("jobs", jobs);
+		mv.setViewName("jobs_mavericks");
 		
-		return "jobs_mavericks";
+		return mv;
 	}
 	
 	@RequestMapping("/createJob")
-	public ModelAndView addJob(@ModelAttribute("job") Jobs_Mavericks job, Model model) {
-		ModelAndView mv = new ModelAndView("jobs_mavericks");			
+	public ModelAndView addJob(@ModelAttribute("job") Jobs_Mavericks job, Model model,ModelAndView mv) {
+		if(!utils.isLoggedIn()) {
+			mv.setViewName("redirect:/");
+			return mv;
+		}
+		else if(!utils.isAdmin()) {
+			mv.setViewName("redirect:/employee_profile_mavericks");
+			return mv;
+		}
+		
+		mv.setViewName("jobs_mavericks");			
 		
 		Jobs_Mavericks newJob = new Jobs_Mavericks(job.getTitle(), job.getSalaryPerDay(), 10);
 		jobRepo.save(newJob);	
@@ -42,6 +65,7 @@ public class JobsController_Mavericks {
 		List<Jobs_Mavericks> jobs = jobRepo.findAll();		
 		model.addAttribute("jobs", jobs);
 		model.addAttribute("message", "Added Job " + job.getTitle());
+		
 		return mv;
 	}
 	
