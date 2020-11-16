@@ -16,6 +16,7 @@ import com.csis3275.dao.UserRepository_Mavericks;
 import com.csis3275.model.Jobs_Mavericks;
 import com.csis3275.model.Pay_Mavericks;
 import com.csis3275.model.Users_Mavericks;
+import com.csis3275.utils.AuthUtils;
 
 @Controller
 public class EmployerProfileController_Mavericks {
@@ -29,17 +30,36 @@ public class EmployerProfileController_Mavericks {
 	@Autowired
 	PayrollDao_Mavericks payRepo;
 	
+	@Autowired
+	AuthUtils utils;
+	
 	@RequestMapping("/admin_mavericks")
-	public String showEmployees(Model model) {
+	public ModelAndView showEmployees(Model model,ModelAndView mv) {
+		if(!utils.isLoggedIn()) {
+			mv.setViewName("redirect:/login");
+			return mv;
+		}
+		else if(!utils.isAdmin()) {
+			mv.setViewName("redirect:/employee_profile_mavericks");
+			return mv;
+		}
+		mv.setViewName("admin_mavericks");
 		List<Users_Mavericks> users = userRepo.findAllEmployees();
-		
 		model.addAttribute("users", users);
 		
-		return "admin_mavericks";
+		return mv;
 	}
 	
 	@RequestMapping("/employee")
-	public String showEmployeeInformation(@RequestParam int userId, Model model) {
+	public ModelAndView showEmployeeInformation(@RequestParam int userId, Model model,ModelAndView mv) {
+		if(!utils.isLoggedIn()) {
+			mv.setViewName("redirect:/login");
+			return mv;
+		}
+		else if(!utils.isAdmin()) {
+			mv.setViewName("redirect:/employee_profile_mavericks");
+			return mv;
+		}
 		
 		Users_Mavericks updUser = userRepo.findById(userId);
 		Jobs_Mavericks job = jobRepo.findById(updUser.getJobId());
@@ -49,7 +69,7 @@ public class EmployerProfileController_Mavericks {
 		model.addAttribute("job", job);
 		model.addAttribute("pay", pay);
 		
-		return "employee_mavericks";
+		return mv;
 	}
 	
 	@PostMapping("/updateEmployeeInfo")
