@@ -16,6 +16,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.csis3275.dao.UserRepository_Mavericks;
 import com.csis3275.dao.JobsRepository_Mavericks;
 import com.csis3275.model.Users_Mavericks;
+import com.csis3275.utils.AuthUtils;
+
+import antlr.Utils;
+
 import com.csis3275.model.Jobs_Mavericks;
 
 @Controller
@@ -26,11 +30,23 @@ public class RegistrationController_Mavericks {
 	@Autowired
 	JobsRepository_Mavericks jobRepo;
 	
+	@Autowired
+	AuthUtils utils;
+	
 	@RequestMapping("/register")
-	public String signup(ModelMap model) {
+	public ModelAndView signup(ModelMap model,ModelAndView mv) {
+		if(!utils.isLoggedIn()) {
+			mv.setViewName("redirect:/");
+			return mv;
+		}
+		else if(!utils.isAdmin()) {
+			mv.setViewName("redirect:/employee_profile_mavericks");
+			return mv;
+		}
+		mv.setViewName("signup_mavericks");
 		Users_Mavericks user = new Users_Mavericks();
 		model.addAttribute("user", user);
-		return "signup_mavericks";
+		return mv;		
 	}
 	
 	@PostMapping("/register")
@@ -51,8 +67,7 @@ public class RegistrationController_Mavericks {
 			return mv;
 		}
 		userRepo.save(user);
-		mv.addObject("message", "We have created your account successfully.");
-		mv.setViewName("success_mavericks");
+		mv.setViewName("redirect:/admin_mavericks");
 		
 		return mv;
 	}

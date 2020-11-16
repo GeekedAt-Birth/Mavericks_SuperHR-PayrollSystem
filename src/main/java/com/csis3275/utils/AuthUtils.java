@@ -26,13 +26,8 @@ public class AuthUtils {
 	}
 
 	public boolean isAdmin() {
-		if(session.getAttribute("LOGGED_IN_USER_ID") == null) {
-			return false;
-		}
-		else {
-			int userId = (int) session.getAttribute("LOGGED_IN_USER_ID");
-			Users_Mavericks user = userRepo.findById(userId);
-			return user.isAdmin();
-		}
+		int userId = (int) session.getAttribute("LOGGED_IN_USER_ID");
+		Users_Mavericks user = userRepo.findById(userId);
+		return user.isAdmin();
 	}
 }
