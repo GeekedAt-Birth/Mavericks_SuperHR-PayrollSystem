@@ -2,11 +2,12 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Registration</title>
+<title>My Profile</title>
 <link href="/css/bootstrap.min.css" rel="stylesheet">
 <script src="/js/jquery-1.11.1.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
@@ -52,7 +53,7 @@
 				<ul class="list-group list-group-flush">
 					<li class="list-group-item">Holidays - ${pay.holidays}</li>
 					<li class="list-group-item">Sick Days - ${pay.sickDays}</li>
-					<li class="list-group-item">Last Pay Date - ${pay.endDate}</li>
+					<li class="list-group-item">Last Pay Date - <fmt:formatDate value="${pay.endDate}" pattern="yyyy-MM-dd" /></li>
 				</ul>
 			</div>
 		</div>
