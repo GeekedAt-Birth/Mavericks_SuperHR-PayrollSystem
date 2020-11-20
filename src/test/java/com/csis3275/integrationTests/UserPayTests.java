@@ -40,7 +40,7 @@ public class UserPayTests {
     @Test
     void checkUserPayConnection2() {
     	user = new Users_Mavericks("tarek", "tarek@gmail.com", "Tarek", "Ahmed", "123123123", "tarekpass", "tarekpass",false, 3);
-        pay = new Pay_Mavericks(7, 10, new Date(), new Date(), 4);
+        pay = new Pay_Mavericks(7, 10, new Date(), new Date(), 4, true);
         
         Users_Mavericks newUser = userRepo.findByUsername(user.getUsername());
         Pay_Mavericks pay = payRepo.findByEmployeeID(newUser.getId());
