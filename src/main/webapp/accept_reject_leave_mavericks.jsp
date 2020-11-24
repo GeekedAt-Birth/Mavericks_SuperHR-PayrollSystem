@@ -11,19 +11,6 @@
 <script src="/js/jquery-1.11.1.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 </head>
-<style type="text/css">
-.accept {
-	color: #fff;
-	background-color: green;
-	border-color: green;
-}
-
-.reject {
-	color: #fff;
-	background-color: red;
-	border-color: red;
-}
-</style>
 <body>
 	<nav class="navbar navbar-light bg-light">
 		<a class="nav-brand" href="/admin_mavericks">Back to Admin Page</a> <a
