@@ -13,8 +13,8 @@
 </head>
 <body>
 	<nav class="navbar navbar-light bg-light">
-		<a class="nav-brand" href="/register">Register Employee</a> <a
-			class="nav-brand" href="/jobs">Manage Jobs</a>
+		<a class="nav-brand" href="/register">Register Employee</a> 
+		<a class="nav-brand" href="/jobs">Manage Jobs</a>
 		<form class="form-signin" action="logout">
 			<div class="text-right mb-3">
 				<button class="btn btn-primary btn-sm " type="submit">Logout</button>
@@ -23,7 +23,11 @@
 	</nav>
 	<div class="container">
 		<br>
-		<h1 class="h3 mb-3 font-weight-normal">Admin Profile</h1>
+		<div class="text-right">
+			<span style="float: left;" class="h3 mb-3 font-weight-normal">Admin Profile</span>
+			<span style="float: right;"><a href="/acceptRejectLeave"><button type="button" class="btn btn-primary btn-sm">Leave Forms <span class="badge badge-light"> ${pending}</span></button></a></span>
+		</div>
+		<br/>
 		<table class="table table-striped table-bordered">
 			<tr>
 				<td>Employee ID</td>

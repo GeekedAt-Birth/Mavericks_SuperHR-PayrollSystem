@@ -15,7 +15,7 @@ INSERT INTO PAY_MAVERICKS (benefitEI, benefitCPP, income_Tax, sick_Days, holiday
 INSERT INTO PAY_MAVERICKS (benefitEI, benefitCPP, income_Tax, sick_Days, holidays, start_Date, end_Date, employeeId, pay_status) VALUES (0.0158, 0.0525, 0.15, 7, 10, '2020-10-23 09:16:39', '2020-11-12 23:37:16', 4, TRUE);
 INSERT INTO PAY_MAVERICKS (benefitEI, benefitCPP, income_Tax, sick_Days, holidays, start_Date, end_Date, employeeId, pay_status) VALUES (0.0158, 0.0525, 0.15, 7, 10, '2020-10-23 09:16:39', '2020-11-12 23:37:16', 5, FALSE);
 
-INSERT INTO LEAVE_APPLICATIONS_MAVERICKS  (id, start_date, end_date, leave_type, reason, application_status, employee_Id) VALUES (1, '2020-11-03 16:04:15', '2020-03-03 22:31:14', 'holidays', 'I am sick','approved', 2);
-INSERT INTO LEAVE_APPLICATIONS_MAVERICKS  (id, start_date, end_date, leave_type, reason, application_status, employee_Id) VALUES (2, '2020-11-05 09:57:13', '2020-01-05 18:04:40', 'sick days', 'I''d like to take a break','pending', 5);
-INSERT INTO LEAVE_APPLICATIONS_MAVERICKS  (id, start_date, end_date, leave_type, reason, application_status, employee_Id) VALUES (3, '2020-11-06 20:19:36', '2020-06-18 01:12:21', 'sick days', 'I got the flu','pending', 3);
-INSERT INTO LEAVE_APPLICATIONS_MAVERICKS  (id, start_date, end_date, leave_type, reason, application_status, employee_Id) VALUES (4, '2020-11-06 10:57:06', '2020-07-03 23:06:12', 'holidays', 'I just hate work','rejected', 4);
+INSERT INTO LEAVE_APPLICATIONS_MAVERICKS  (id, start_date, end_date, days, leave_type, reason, application_status, employee_Id) VALUES (1, '2020-11-03 16:04:15', '2020-11-07 22:31:14', 4, 'holidays', 'I am sick','approved', 2);
+INSERT INTO LEAVE_APPLICATIONS_MAVERICKS  (id, start_date, end_date, days, leave_type, reason, application_status, employee_Id) VALUES (2, '2020-11-05 09:57:13', '2020-11-06 18:04:40', 1, 'sick days', 'I''d like to take a break','pending', 5);
+INSERT INTO LEAVE_APPLICATIONS_MAVERICKS  (id, start_date, end_date, days, leave_type, reason, application_status, employee_Id) VALUES (3, '2020-11-06 20:19:36', '2020-11-18 01:12:21', 12, 'sick days', 'I got the flu','pending', 3);
+INSERT INTO LEAVE_APPLICATIONS_MAVERICKS  (id, start_date, end_date, days, leave_type, reason, application_status, employee_Id) VALUES (4, '2020-04-30 10:57:06', '2020-05-03 23:06:12', 3, 'holidays', 'I just hate work','rejected', 4);

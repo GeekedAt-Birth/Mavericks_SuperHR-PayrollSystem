@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.csis3275.dao.JobsRepository_Mavericks;
+import com.csis3275.dao.LeaveRepository_Mavericks;
 import com.csis3275.dao.PayrollDao_Mavericks;
 import com.csis3275.dao.UserRepository_Mavericks;
 import com.csis3275.model.Jobs_Mavericks;
@@ -36,6 +37,9 @@ public class EmployerProfileController_Mavericks {
 	PayrollDao_Mavericks payRepo;
 
 	@Autowired
+	LeaveRepository_Mavericks leaveRepo;
+
+	@Autowired
 	AuthUtils utils;
 
 	@RequestMapping("/admin_mavericks")
@@ -49,7 +53,9 @@ public class EmployerProfileController_Mavericks {
 		}
 		mv.setViewName("admin_mavericks");
 		List<Users_Mavericks> users = userRepo.findAllEmployees();
+		int pending = leaveRepo.pendingForms();
 		model.addAttribute("users", users);
+		model.addAttribute("pending", pending);
 
 		return mv;
 	}
