@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import com.csis3275.model.LeaveApplications_Mavericks;
+
 
 public interface LeaveRepository_Mavericks extends JpaRepository<LeaveApplications_Mavericks, Integer> {
 
@@ -21,5 +23,11 @@ public interface LeaveRepository_Mavericks extends JpaRepository<LeaveApplicatio
 	@Query(value="SELECT COUNT(Application_Status) FROM leave_applications_mavericks WHERE Application_Status = 'pending'", nativeQuery = true)
 	int pendingForms();
 	
+	@Query(value="SELECT * FROM leave_applications_mavericks WHERE employee_Id = :id", nativeQuery = true)
+	List<LeaveApplications_Mavericks> employeeLeaveForms(@Param("id") int id);
+
+	
 	LeaveApplications_Mavericks findById(int id);
+	LeaveApplications_Mavericks findByEmployeeId(int id);
+	
 }

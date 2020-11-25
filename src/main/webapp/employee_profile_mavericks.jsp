@@ -2,7 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +15,7 @@
 
 <body>
 	<nav class="navbar navbar-light bg-light">
-	<br>
+		<br>
 		<h3>Welcome ${user.username}</h3>
 		<form class="form-signin" method="post" action="logout">
 			<div class="text-right mb-3">
@@ -45,7 +45,8 @@
 				<div class="card-header">Job Information</div>
 				<ul class="list-group list-group-flush">
 					<li class="list-group-item">Job Title - ${job.title}</li>
-					<li class="list-group-item">Salary Per day - ${job.salaryPerDay}</li>
+					<li class="list-group-item">Salary Per day -
+						${job.salaryPerDay}</li>
 				</ul>
 			</div>
 			<div class="card" style="width: 18rem;">
@@ -53,10 +54,86 @@
 				<ul class="list-group list-group-flush">
 					<li class="list-group-item">Holidays - ${pay.holidays}</li>
 					<li class="list-group-item">Sick Days - ${pay.sickDays}</li>
-					<li class="list-group-item">Last Pay Date - <fmt:formatDate value="${pay.endDate}" pattern="yyyy-MM-dd" /></li>
+					<li class="list-group-item">Last Pay Date - <fmt:formatDate
+							value="${pay.endDate}" pattern="yyyy-MM-dd" /></li>
 				</ul>
 			</div>
 		</div>
+		<div class="card">
+			<div class="card-header">
+				Leave Applications
+				<button style="float: right;" type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModal">Leave Application Form</button>
+			</div>
+			<ul class="list-group list-group-flush">
+				<c:forEach var="leave" items="${leaveForms}">
+					<li class="list-group-item">Start Date - <fmt:formatDate value="${leave.startDate}" pattern="yyyy-MM-dd" /></li>
+					<li class="list-group-item">End Date - <fmt:formatDate value="${leave.endDate}" pattern="yyyy-MM-dd" /></li>
+					<li class="list-group-item">Number Of Days - ${leave.days}</li>
+					<li class="list-group-item">Reason - ${leave.reason}</li>
+					<li class="list-group-item">Leave type - ${leave.leaveType}</li>
+					<li class="list-group-item">Status - ${leave.applicationStatus}</li>
+				</c:forEach>
+			</ul>
+		</div>
 	</div>
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Leave Application Form</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form:form action="leaveApplication" method="POST" modelAttribute="leave" id="leaveApplication-form" >
+						<div class="form-group">
+						   <div class="form-group row"><h6>EmployeeID: ${user.id}<br><br>Username: ${user.username}</h6></div>
+							<div class="form-group row">
+								<label for="inputStartDate" class="col-sm-2 col-form-label">Select Start Date:</label> 
+								<input type="date" name="startDate" class="form-control col-sm-8" id="inputStartDate" required>
+								<form:errors path="startDate" style="color:red" />
+							</div>
+							<div class="form-group row">
+								<label for="inputEndDate" class="col-sm-2 col-form-label">Select End Date:</label> 
+								<input type="date" name="endDate" class="form-control col-sm-8" id="inputEndDate" required>
+								<form:errors path="endDate" style="color:red" />
+							</div>
+
+							<div class="form-group row">
+    							<div class="col-sm-2">Check Leave Type:</div>
+								<div class="form-check form-check-inline">						  
+  									<input class="form-check-input" name ="leaveType" type="checkbox" id="inputSickDay" >
+  									<label class="form-check-label" for="inputSickDay">Sick Day</label>
+  									<form:errors path="leaveType" style="color:red" />
+  								</div>
+  								<div class="form-check form-check-inline">	  
+  									<input class="form-check-input" name = "leaveType" type="checkbox" id= "inputHoliday" >
+  									<label class="form-check-label" for="inputHoliday">Holiday</label>
+  									<form:errors path="leaveType" style="color:red" />
+  								</div>
+							</div>
+
+							<div class="form-group row">
+								<label for="inputReason" class="col-sm-2 col-form-label">Reason For Leave:</label>
+								<textarea class="form-control col-sm-8" name="reason" id="inputReason"></textarea>
+								<form:errors path="reason" style="color:red" />
+							</div>
+						</div>
+					</form:form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary" onclick="form_submit()">Submit</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		function form_submit() {
+			document.getElementById("leaveApplication-form").submit();
+		}
+	</script>
 </html>
 
