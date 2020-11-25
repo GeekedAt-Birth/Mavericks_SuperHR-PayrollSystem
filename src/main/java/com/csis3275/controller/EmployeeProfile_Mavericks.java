@@ -28,42 +28,43 @@ import com.csis3275.model.Users_Mavericks;
 
 @Controller
 public class EmployeeProfile_Mavericks {
-	
+
 	@Autowired
 	UserRepository_Mavericks userRepo;
-	
+
 	@Autowired
 	JobsRepository_Mavericks jobRepo;
-	
+
 	@Autowired
 	PayrollDao_Mavericks payRepo;
-	
+
 	@Autowired
 	LeaveRepository_Mavericks leaveRepo;
-	
+
 	@RequestMapping("/employee_profile_mavericks")
-	public ModelAndView showEmployeeProfile(Users_Mavericks user,BindingResult result,HttpSession session) {
-		if(session.getAttribute("LOGGED_IN_USER_ID") == null) {
+	public ModelAndView showEmployeeProfile(Users_Mavericks user, BindingResult result, HttpSession session) {
+		if (session.getAttribute("LOGGED_IN_USER_ID") == null) {
 			ModelAndView modelAndView = new ModelAndView("redirect:/login");
 			return modelAndView;
 		}
-		ModelAndView mv = new ModelAndView("employee_profile_mavericks");		
+		ModelAndView mv = new ModelAndView("employee_profile_mavericks");
 		if (result.hasErrors()) {
 			return mv;
 		}
-		
+
 		int userId = (int) session.getAttribute("LOGGED_IN_USER_ID");
 		Users_Mavericks newUser = userRepo.findById(userId);
 		Jobs_Mavericks job = jobRepo.findById(newUser.getJobId());
 		Pay_Mavericks pay = payRepo.findByEmployeeID(userId);
 		List<LeaveApplications_Mavericks> leaveForms = leaveRepo.employeeLeaveForms(userId);
 		mv.addObject("user", newUser);
-		mv.addObject("job",job);
-		mv.addObject("pay",pay);
-		mv.addObject("leaveForms",leaveForms);
-		
+		mv.addObject("job", job);
+		mv.addObject("pay", pay);
+		mv.addObject("leaveForms", leaveForms);
+
 		return mv;
 	}
+
 	/**
 	 * This is to format the date format from database and hmtl input
 	 * 
@@ -75,19 +76,18 @@ public class EmployeeProfile_Mavericks {
 		CustomDateEditor editor = new CustomDateEditor(dateFormat, true);
 		binder.registerCustomEditor(Date.class, editor);
 	}
+
 	@PostMapping("/leaveApplication")
-	public ModelAndView saveLeave(Users_Mavericks user, @ModelAttribute("leave") LeaveApplications_Mavericks leave, BindingResult result,HttpSession session) {
+	public ModelAndView saveLeave(Users_Mavericks user, @ModelAttribute("leave") LeaveApplications_Mavericks leave, BindingResult result, HttpSession session) {
 		ModelAndView mv = new ModelAndView("employee_profile_mavericks");
 		if (result.hasErrors()) {
 			return mv;
 		}
-		
 
 		int userId = (int) session.getAttribute("LOGGED_IN_USER_ID");
-		LeaveApplications_Mavericks application = new  LeaveApplications_Mavericks(leave.getStartDate(), leave.getEndDate(), 0, leave.getReason(), leave.getLeaveType(), "pending", userId);
+		LeaveApplications_Mavericks application = new LeaveApplications_Mavericks(leave.getStartDate(), leave.getEndDate(), 0, leave.getReason(), leave.getLeaveType(), "pending", userId);
 		leaveRepo.save(application);
 		mv.setViewName("redirect:/employee_profile_mavericks");
-		
 
 		return mv;
 	}

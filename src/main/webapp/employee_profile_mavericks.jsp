@@ -59,73 +59,109 @@
 				</ul>
 			</div>
 		</div>
-		<div class="card">
+	</div>
+	<div class="container m-5 p-5">
+		<div class="card border-dark">
 			<div class="card-header">
-				Leave Applications
-				<button style="float: right;" type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModal">Leave Application Form</button>
+				<h4>
+					Leave Applications
+					<button style="float: right;" type="button"
+						class="btn btn-outline-info" data-toggle="modal"
+						data-target="#exampleModal">Leave Application Form</button>
+				</h4>
 			</div>
-			<ul class="list-group list-group-flush">
+			<div class="row">
 				<c:forEach var="leave" items="${leaveForms}">
-					<li class="list-group-item">Start Date - <fmt:formatDate value="${leave.startDate}" pattern="yyyy-MM-dd" /></li>
-					<li class="list-group-item">End Date - <fmt:formatDate value="${leave.endDate}" pattern="yyyy-MM-dd" /></li>
-					<li class="list-group-item">Number Of Days - ${leave.days}</li>
-					<li class="list-group-item">Reason - ${leave.reason}</li>
-					<li class="list-group-item">Leave type - ${leave.leaveType}</li>
-					<li class="list-group-item">Status - ${leave.applicationStatus}</li>
+					<div class="card-body">
+						<div class="card bg-info border-dark">
+							<h6 class="card-header text-white">Application Status:
+								${leave.applicationStatus}</h6>
+							<ul class="list-group list-group-flush ">
+								<li class="list-group-item">Start Date: <fmt:formatDate
+										value="${leave.startDate}" pattern="yyyy-MM-dd" /></li>
+								<li class="list-group-item">End Date: <fmt:formatDate
+										value="${leave.endDate}" pattern="yyyy-MM-dd" /></li>
+								<li class="list-group-item">Number Of Days: ${leave.days}</li>
+								<li class="list-group-item">Reason: ${leave.reason}</li>
+								<li class="list-group-item">Leave type: ${leave.leaveType}</li>
+							</ul>
+						</div>
+					</div>
 				</c:forEach>
-			</ul>
+			</div>
 		</div>
 	</div>
+
+
 	<!-- Modal -->
-	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal fade" id="exampleModal" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Leave Application Form</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<h5 class="modal-title" id="exampleModalLabel">Leave
+						Application Form</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
 				<div class="modal-body">
-					<form:form action="leaveApplication" method="POST" modelAttribute="leave" id="leaveApplication-form" >
+					<form:form action="leaveApplication" method="POST"
+						modelAttribute="leave" id="leaveApplication-form">
 						<div class="form-group">
-						   <div class="form-group row"><h6>EmployeeID: ${user.id}<br><br>Username: ${user.username}</h6></div>
 							<div class="form-group row">
-								<label for="inputStartDate" class="col-sm-2 col-form-label">Select Start Date:</label> 
-								<input type="date" name="startDate" class="form-control col-sm-8" id="inputStartDate" required>
+								<h6>
+									EmployeeID: ${user.id}<br> <br>Username:
+									${user.username}
+								</h6>
+							</div>
+							<div class="form-group row">
+								<label for="inputStartDate" class="col-sm-2 col-form-label">Select
+									Start Date:</label> <input type="date" name="startDate"
+									class="form-control col-sm-8" id="inputStartDate" required>
 								<form:errors path="startDate" style="color:red" />
 							</div>
 							<div class="form-group row">
-								<label for="inputEndDate" class="col-sm-2 col-form-label">Select End Date:</label> 
-								<input type="date" name="endDate" class="form-control col-sm-8" id="inputEndDate" required>
+								<label for="inputEndDate" class="col-sm-2 col-form-label">Select
+									End Date:</label> <input type="date" name="endDate"
+									class="form-control col-sm-8" id="inputEndDate" required>
 								<form:errors path="endDate" style="color:red" />
 							</div>
 
 							<div class="form-group row">
-    							<div class="col-sm-2">Check Leave Type:</div>
-								<div class="form-check form-check-inline">						  
-  									<input class="form-check-input" name ="leaveType" type="checkbox" id="inputSickDay" >
-  									<label class="form-check-label" for="inputSickDay">Sick Day</label>
-  									<form:errors path="leaveType" style="color:red" />
-  								</div>
-  								<div class="form-check form-check-inline">	  
-  									<input class="form-check-input" name = "leaveType" type="checkbox" id= "inputHoliday" >
-  									<label class="form-check-label" for="inputHoliday">Holiday</label>
-  									<form:errors path="leaveType" style="color:red" />
-  								</div>
+								<div class="col-sm-2">Check Leave Type:</div>
+								<div class="form-check form-check-inline">
+									<input class="form-check-input" name="leaveType"
+										type="checkbox" value="sick days" id="inputSickDay"
+										onchange="uncheck(this)"> <label
+										class="form-check-label" for="inputSickDay">Sick Day</label>
+									<form:errors path="leaveType" style="color:red" />
+								</div>
+								<div class="form-check form-check-inline">
+									<input class="form-check-input" name="leaveType"
+										type="checkbox" value="holidays" id="inputHoliday"
+										onchange="uncheck(this)"> <label
+										class="form-check-label" for="inputHoliday">Holiday</label>
+									<form:errors path="leaveType" style="color:red" />
+								</div>
 							</div>
 
 							<div class="form-group row">
-								<label for="inputReason" class="col-sm-2 col-form-label">Reason For Leave:</label>
-								<textarea class="form-control col-sm-8" name="reason" id="inputReason"></textarea>
+								<label for="inputReason" class="col-sm-2 col-form-label">Reason
+									For Leave:</label>
+								<textarea class="form-control col-sm-8" name="reason"
+									id="inputReason" required></textarea>
 								<form:errors path="reason" style="color:red" />
 							</div>
 						</div>
 					</form:form>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary" onclick="form_submit()">Submit</button>
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary"
+						onclick="form_submit()">Submit</button>
 				</div>
 			</div>
 		</div>
@@ -133,6 +169,13 @@
 	<script>
 		function form_submit() {
 			document.getElementById("leaveApplication-form").submit();
+		}
+		function uncheck(obj) {
+			var check = document.getElementsByClassName("form-check-input");
+			for (var i = 0; i < check.length; i++) {
+				check[i].checked = false;
+			}
+			obj.checked = true;
 		}
 	</script>
 </html>
