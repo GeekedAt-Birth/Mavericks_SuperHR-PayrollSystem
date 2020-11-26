@@ -81,7 +81,6 @@
 										value="${leave.startDate}" pattern="yyyy-MM-dd" /></li>
 								<li class="list-group-item">End Date: <fmt:formatDate
 										value="${leave.endDate}" pattern="yyyy-MM-dd" /></li>
-								<li class="list-group-item">Number Of Days: ${leave.days}</li>
 								<li class="list-group-item">Reason: ${leave.reason}</li>
 								<li class="list-group-item">Leave type: ${leave.leaveType}</li>
 							</ul>

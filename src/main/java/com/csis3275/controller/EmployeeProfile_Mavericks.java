@@ -85,7 +85,7 @@ public class EmployeeProfile_Mavericks {
 		}
 
 		int userId = (int) session.getAttribute("LOGGED_IN_USER_ID");
-		LeaveApplications_Mavericks application = new LeaveApplications_Mavericks(leave.getStartDate(), leave.getEndDate(), 0, leave.getReason(), leave.getLeaveType(), "pending", userId);
+		LeaveApplications_Mavericks application = new LeaveApplications_Mavericks(leave.getStartDate(), leave.getEndDate(), leave.getReason(), leave.getLeaveType(), "pending", userId);
 		leaveRepo.save(application);
 		mv.setViewName("redirect:/employee_profile_mavericks");
 
