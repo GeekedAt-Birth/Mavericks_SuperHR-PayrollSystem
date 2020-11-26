@@ -18,7 +18,6 @@ public class LeaveApplications_Mavericks {
 	
 	private Date startDate;
 	private Date endDate;
-	private int days;
 	private String reason;
 	private String leaveType;
 	private String applicationStatus;
@@ -32,7 +31,6 @@ public class LeaveApplications_Mavericks {
 	public LeaveApplications_Mavericks(Date startDate, Date endDate, int days, String reason, String leaveType, String applicationStatus, int employeeId) {
 		this.startDate = startDate;
 		this.endDate = endDate;
-		this.days = days;
 		this.reason = reason;
 		this.leaveType = leaveType;
 		this.applicationStatus = applicationStatus;
@@ -59,12 +57,6 @@ public class LeaveApplications_Mavericks {
 	}
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
-	}
-	public int getDays() {
-		return days;
-	}
-	public void setDays(int days) {
-		this.days = days;
 	}
 	public String getReason() {
 		return reason;
