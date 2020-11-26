@@ -31,8 +31,7 @@ public class LeaveApplications_Mavericks {
 	}
 
 	// Constructor
-	public LeaveApplications_Mavericks(Date startDate, Date endDate, int days, String reason, String leaveType,
-			String applicationStatus, int employeeId) {
+	public LeaveApplications_Mavericks(Date startDate, Date endDate, int days, String reason, String leaveType, String applicationStatus, int employeeId) {
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.days = days;

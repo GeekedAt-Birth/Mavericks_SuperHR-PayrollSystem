@@ -125,7 +125,7 @@
 							<div class="form-group row">
 								<label for="inputEndDate" class="col-sm-2 col-form-label">Select
 									End Date:</label> <input type="date" name="endDate"
-									class="form-control col-sm-8" id="inputEndDate" required>
+									class="form-control col-sm-8" id="inputEndDate" min = "setMinEndDate()" required>
 								<form:errors path="endDate" style="color:red" />
 							</div>
 
@@ -176,6 +176,9 @@
 				check[i].checked = false;
 			}
 			obj.checked = true;
+		}
+		function setMinEndDate(){
+			document.getElementById("inputEndDate").min = document.getElementById("inputStartDate").value;
 		}
 	</script>
 </html>
