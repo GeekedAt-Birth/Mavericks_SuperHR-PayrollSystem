@@ -65,14 +65,14 @@ public class AcceptRejectLeaveController_Mavericks {
 		} else if (process.equals("approve")) {
 			updLeave.setApplicationStatus("approved");
 
-			Pay_Mavericks pay = payRepo.findByEmployeeID(id);
+			Pay_Mavericks pay = payRepo.findByEmployeeID(leave.getEmployeeId());
 			if (updLeave.getLeaveType().equals("sick days")) {
 				int sickDays = pay.getSickDays();
-				int daysOff = updLeave.getDays();
+				int daysOff = leaveRepo.daysOff(id);
 				pay.setSickDays(sickDays - daysOff);
 			} else if (updLeave.getLeaveType().equals("holidays")) {
 				int holidays = pay.getHolidays();
-				int daysOff = updLeave.getDays();
+				int daysOff = leaveRepo.daysOff(id);
 				pay.setHolidays(holidays - daysOff);
 			}
 			

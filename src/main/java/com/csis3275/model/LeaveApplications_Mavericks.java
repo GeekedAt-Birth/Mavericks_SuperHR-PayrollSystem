@@ -19,7 +19,6 @@ public class LeaveApplications_Mavericks {
 
 	private Date startDate;
 	private Date endDate;
-	private int days;
 	private String reason;
 	private String leaveType;
 	private String applicationStatus;

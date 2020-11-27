@@ -31,6 +31,7 @@
 		<form:form name="leaveForm" modelAttribute="leave" action="/processLeave">
 			<h5>Pending Leave Forms</h5>
 			<c:forEach var="pending" items="${pending}">
+				<input type="hidden" id="employeeId" name="employeeId" value="${pending.employeeId}"/>
 				<table class="table table-striped table-bordered">
 					<tr>
 						<td>Employee ID</td>
@@ -44,10 +45,7 @@
 						<td>End Date</td>
 						<td>${pending.endDate}</td>
 					</tr>
-					<tr>
-						<td>Days</td>
-						<td>${pending.days}</td>
-					</tr>
+				
 					<tr>
 						<td>Reason</td>
 						<td>${pending.reason}</td>
@@ -85,10 +83,7 @@
 					<td>End Date</td>
 					<td>${accepted.endDate}</td>
 				</tr>
-				<tr>
-					<td>Days</td>
-					<td>${accepted.days}</td>
-				</tr>
+			
 				<tr>
 					<td>Reason</td>
 					<td>${accepted.reason}</td>
@@ -121,10 +116,7 @@
 					<td>End Date</td>
 					<td>${rejected.endDate}</td>
 				</tr>
-				<tr>
-					<td>Days</td>
-					<td>${rejected.days}</td>
-				</tr>
+
 				<tr>
 					<td>Reason</td>
 					<td>${rejected.reason}</td>
