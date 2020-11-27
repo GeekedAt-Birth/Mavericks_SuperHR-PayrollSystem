@@ -82,6 +82,7 @@
 					<td>End Date</td>
 					<td>${accepted.endDate}</td>
 				</tr>
+
 				<tr>
 					<td>Reason</td>
 					<td>${accepted.reason}</td>
@@ -114,6 +115,7 @@
 					<td>End Date</td>
 					<td>${rejected.endDate}</td>
 				</tr>
+
 				<tr>
 					<td>Reason</td>
 					<td>${rejected.reason}</td>
