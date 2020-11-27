@@ -118,13 +118,13 @@
 							<div class="form-group row">
 								<label for="inputStartDate" class="col-sm-2 col-form-label">Select
 									Start Date:</label> <input type="date" name="startDate"
-									class="form-control col-sm-8" id="inputStartDate" required>
+									class="form-control col-sm-8" id="inputStartDate" onchange = "setMinEndDate()" required>
 								<form:errors path="startDate" style="color:red" />
 							</div>
 							<div class="form-group row">
 								<label for="inputEndDate" class="col-sm-2 col-form-label">Select
 									End Date:</label> <input type="date" name="endDate"
-									class="form-control col-sm-8" id="inputEndDate" min = "setMinEndDate()" required>
+									class="form-control col-sm-8" id="inputEndDate"  required>
 								<form:errors path="endDate" style="color:red" />
 							</div>
 
