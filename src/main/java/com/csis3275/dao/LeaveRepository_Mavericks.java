@@ -20,7 +20,7 @@ public interface LeaveRepository_Mavericks extends JpaRepository<LeaveApplicatio
 	List<LeaveApplications_Mavericks> listRejectedForms();
 
 	@Query(value = "SELECT COUNT(Application_Status) FROM leave_applications_mavericks WHERE Application_Status = 'pending'", nativeQuery = true)
-	int pendingForms();
+	int pendingFormsCount();
 		
 	@Query(value="SELECT DATEDIFF(day, start_date, end_date) AS days FROM LEAVE_APPLICATIONS_MAVERICKS WHERE id =:id", nativeQuery = true)
 	int daysOff(int id);

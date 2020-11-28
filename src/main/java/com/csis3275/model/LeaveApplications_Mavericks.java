@@ -1,6 +1,5 @@
 package com.csis3275.model;
 
-import java.time.Period;
 import java.util.Date;
 
 import javax.persistence.Entity;

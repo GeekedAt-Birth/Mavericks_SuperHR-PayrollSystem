@@ -65,7 +65,10 @@ public class AcceptRejectLeaveController_Mavericks {
 		} else if (process.equals("approve")) {
 			updLeave.setApplicationStatus("approved");
 
-			Pay_Mavericks pay = payRepo.findByEmployeeID(leave.getEmployeeId());
+			Pay_Mavericks pay = payRepo.findByEmployeeIDLatest(leave.getEmployeeId());
+			
+			System.out.println(leave.getEmployeeId());
+			
 			if (updLeave.getLeaveType().equals("sick days")) {
 				int sickDays = pay.getSickDays();
 				int daysOff = leaveRepo.daysOff(id);

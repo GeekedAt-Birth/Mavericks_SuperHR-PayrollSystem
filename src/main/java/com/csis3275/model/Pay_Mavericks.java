@@ -1,6 +1,5 @@
 package com.csis3275.model;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -8,8 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name = "pay_mavericks")
@@ -116,19 +113,6 @@ public class Pay_Mavericks {
 
 	public void setPayStatus(boolean payStatus) {
 		this.payStatus = payStatus;
-	}
-
-
-	// Methods
-
-	/**
-	 * Calculates the Employees Salary
-	 * 
-	 * @return
-	 */
-	public double calculateSalary() {
-		return 0;
-
 	}
 
 }

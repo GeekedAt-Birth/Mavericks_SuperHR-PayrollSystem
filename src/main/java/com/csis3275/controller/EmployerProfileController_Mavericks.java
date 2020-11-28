@@ -53,9 +53,12 @@ public class EmployerProfileController_Mavericks {
 		}
 		mv.setViewName("admin_mavericks");
 		List<Users_Mavericks> users = userRepo.findAllEmployees();
-		int pending = leaveRepo.pendingForms();
+		List<Pay_Mavericks> pendingPayment = payRepo.payPendings();
+		
+		int pendingCount = leaveRepo.pendingFormsCount();
 		model.addAttribute("users", users);
-		model.addAttribute("pending", pending);
+		model.addAttribute("pendingCount", pendingCount);
+		model.addAttribute("pendingPayments",pendingPayment);
 
 		return mv;
 	}
@@ -74,9 +77,12 @@ public class EmployerProfileController_Mavericks {
 		Jobs_Mavericks job = jobRepo.findById(updUser.getJobId());
 		Pay_Mavericks pay = payRepo.findByEmployeeID(userId);
 
+		double totalPay = job.getSalaryPerDay()*10 - job.getSalaryPerDay()*pay.getBenefitCPP()- job.getSalaryPerDay()*pay.getBenefitEI() - job.getSalaryPerDay()*pay.getIncomeTax();
+				
 		model.addAttribute("user", updUser);
 		model.addAttribute("job", job);
 		model.addAttribute("pay", pay);
+		model.addAttribute("totalPay", totalPay);
 
 		return mv;
 	}
