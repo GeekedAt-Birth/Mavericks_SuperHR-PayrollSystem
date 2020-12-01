@@ -61,6 +61,7 @@ public class EmployeeProfile_Mavericks {
 		mv.addObject("job", job);
 		mv.addObject("pay", pay);
 		mv.addObject("leaveForms", leaveForms);
+		mv.addObject("lastPayments", payRepo.lastPayments(userId));
 
 		return mv;
 	}

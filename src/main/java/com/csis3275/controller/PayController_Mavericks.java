@@ -24,7 +24,7 @@ public class PayController_Mavericks {
 	AuthUtils utils;
 	
 	@RequestMapping("/processPayment")
-	public ModelAndView processPayment(@RequestParam int payId,Model model, ModelAndView mv) {
+	public ModelAndView processPayment(@RequestParam int payId,@RequestParam double totalPaid,Model model, ModelAndView mv) {
 		if (!utils.isLoggedIn()) {
 			mv.setViewName("redirect:/login");
 			return mv;
@@ -39,10 +39,10 @@ public class PayController_Mavericks {
 		Optional<Pay_Mavericks> pay = payRepo.findById(payId);
 		if(!pay.isEmpty()) {
 			pay.get().setPayStatus(true);
+			pay.get().setTotalPaid(totalPaid);
 			payRepo.save(pay.get());
 			
 			Date endDate = pay.get().getEndDate();
-			System.out.println(endDate);
 			Date newStartDate = (addDays(endDate, 1));
 			Date newEndDate = (addDays(endDate, 14));
 			
@@ -53,6 +53,7 @@ public class PayController_Mavericks {
 			newPay.setEndDate(newEndDate);
 			newPay.setEmployeeID(pay.get().getEmployeeID());
 			newPay.setPayStatus(false);
+			newPay.setTotalPaid(0);
 			payRepo.save(newPay);
 		}
 		

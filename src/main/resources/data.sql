@@ -11,21 +11,21 @@ INSERT INTO USERS_MAVERICKS (USERNAME,EMAIL,FIRST_NAME,LAST_NAME,PHONE_NUMBER,PA
 
 
 
-INSERT INTO PAY_MAVERICKS (benefitEI, benefitCPP, income_Tax, sick_Days, holidays, start_Date, end_Date, employeeId, pay_status) VALUES (0.0158, 0.0525, 0.15, 14, 10, '2020-11-01', '2020-11-13', 2, TRUE);
-INSERT INTO PAY_MAVERICKS (benefitEI, benefitCPP, income_Tax, sick_Days, holidays, start_Date, end_Date, employeeId, pay_status) VALUES (0.0158, 0.0525, 0.15, 14, 10, '2020-11-14', '2020-11-28', 2, TRUE);
-INSERT INTO PAY_MAVERICKS (benefitEI, benefitCPP, income_Tax, sick_Days, holidays, start_Date, end_Date, employeeId, pay_status) VALUES (0.0158, 0.0525, 0.15, 14, 10, '2020-11-29', '2020-12-13', 2, FALSE);
+INSERT INTO PAY_MAVERICKS (benefitEI, benefitCPP, income_Tax, sick_Days, holidays, start_Date, end_Date, employeeId, pay_status,total_paid) VALUES (0.0158, 0.0525, 0.15, 14, 10, '2020-11-01', '2020-11-13', 2, TRUE,1800.2);
+INSERT INTO PAY_MAVERICKS (benefitEI, benefitCPP, income_Tax, sick_Days, holidays, start_Date, end_Date, employeeId, pay_status,total_paid) VALUES (0.0158, 0.0525, 0.15, 14, 10, '2020-11-14', '2020-11-28', 2, TRUE,1423.14);
+INSERT INTO PAY_MAVERICKS (benefitEI, benefitCPP, income_Tax, sick_Days, holidays, start_Date, end_Date, employeeId, pay_status,total_paid) VALUES (0.0158, 0.0525, 0.15, 14, 10, '2020-11-29', '2020-12-13', 2, FALSE,0);
 
-INSERT INTO PAY_MAVERICKS (benefitEI, benefitCPP, income_Tax, sick_Days, holidays, start_Date, end_Date, employeeId, pay_status) VALUES (0.0158, 0.0525, 0.15, 14, 15, '2020-11-01', '2020-11-13', 3, TRUE);
-INSERT INTO PAY_MAVERICKS (benefitEI, benefitCPP, income_Tax, sick_Days, holidays, start_Date, end_Date, employeeId, pay_status) VALUES (0.0158, 0.0525, 0.15, 14, 15, '2020-11-14', '2020-11-28', 3, TRUE);
-INSERT INTO PAY_MAVERICKS (benefitEI, benefitCPP, income_Tax, sick_Days, holidays, start_Date, end_Date, employeeId, pay_status) VALUES (0.0158, 0.0525, 0.15, 14, 15, '2020-11-29', '2020-12-13', 3, FALSE);
+INSERT INTO PAY_MAVERICKS (benefitEI, benefitCPP, income_Tax, sick_Days, holidays, start_Date, end_Date, employeeId, pay_status,total_paid) VALUES (0.0158, 0.0525, 0.15, 14, 15, '2020-11-01', '2020-11-13', 3, TRUE,1237.12);
+INSERT INTO PAY_MAVERICKS (benefitEI, benefitCPP, income_Tax, sick_Days, holidays, start_Date, end_Date, employeeId, pay_status,total_paid) VALUES (0.0158, 0.0525, 0.15, 14, 15, '2020-11-14', '2020-11-28', 3, TRUE,2987.99);
+INSERT INTO PAY_MAVERICKS (benefitEI, benefitCPP, income_Tax, sick_Days, holidays, start_Date, end_Date, employeeId, pay_status,total_paid) VALUES (0.0158, 0.0525, 0.15, 14, 15, '2020-11-29', '2020-12-13', 3, FALSE,0);
 
-INSERT INTO PAY_MAVERICKS (benefitEI, benefitCPP, income_Tax, sick_Days, holidays, start_Date, end_Date, employeeId, pay_status) VALUES (0.0158, 0.0525, 0.15, 7, 10, '2020-11-01', '2020-11-13', 4, TRUE);
-INSERT INTO PAY_MAVERICKS (benefitEI, benefitCPP, income_Tax, sick_Days, holidays, start_Date, end_Date, employeeId, pay_status) VALUES (0.0158, 0.0525, 0.15, 7, 10, '2020-11-14', '2020-11-28', 4, TRUE);
-INSERT INTO PAY_MAVERICKS (benefitEI, benefitCPP, income_Tax, sick_Days, holidays, start_Date, end_Date, employeeId, pay_status) VALUES (0.0158, 0.0525, 0.15, 7, 10, '2020-11-29', '2020-12-13', 4, FALSE);
+INSERT INTO PAY_MAVERICKS (benefitEI, benefitCPP, income_Tax, sick_Days, holidays, start_Date, end_Date, employeeId, pay_status,total_paid) VALUES (0.0158, 0.0525, 0.15, 7, 10, '2020-11-01', '2020-11-13', 4, TRUE,1987.25);
+INSERT INTO PAY_MAVERICKS (benefitEI, benefitCPP, income_Tax, sick_Days, holidays, start_Date, end_Date, employeeId, pay_status,total_paid) VALUES (0.0158, 0.0525, 0.15, 7, 10, '2020-11-14', '2020-11-28', 4, TRUE,1890.25);
+INSERT INTO PAY_MAVERICKS (benefitEI, benefitCPP, income_Tax, sick_Days, holidays, start_Date, end_Date, employeeId, pay_status,total_paid) VALUES (0.0158, 0.0525, 0.15, 7, 10, '2020-11-29', '2020-12-13', 4, FALSE,0);
 
-INSERT INTO PAY_MAVERICKS (benefitEI, benefitCPP, income_Tax, sick_Days, holidays, start_Date, end_Date, employeeId, pay_status) VALUES (0.0158, 0.0525, 0.15, 7, 10, '2020-11-01', '2020-11-13', 5, TRUE);
-INSERT INTO PAY_MAVERICKS (benefitEI, benefitCPP, income_Tax, sick_Days, holidays, start_Date, end_Date, employeeId, pay_status) VALUES (0.0158, 0.0525, 0.15, 7, 10, '2020-11-14', '2020-11-28', 5, TRUE);
-INSERT INTO PAY_MAVERICKS (benefitEI, benefitCPP, income_Tax, sick_Days, holidays, start_Date, end_Date, employeeId, pay_status) VALUES (0.0158, 0.0525, 0.15, 7, 10, '2020-11-29', '2020-12-13', 5, FALSE);
+INSERT INTO PAY_MAVERICKS (benefitEI, benefitCPP, income_Tax, sick_Days, holidays, start_Date, end_Date, employeeId, pay_status,total_paid) VALUES (0.0158, 0.0525, 0.15, 7, 10, '2020-11-01', '2020-11-13', 5, TRUE,1800.25);
+INSERT INTO PAY_MAVERICKS (benefitEI, benefitCPP, income_Tax, sick_Days, holidays, start_Date, end_Date, employeeId, pay_status,total_paid) VALUES (0.0158, 0.0525, 0.15, 7, 10, '2020-11-14', '2020-11-28', 5, TRUE,1800.25);
+INSERT INTO PAY_MAVERICKS (benefitEI, benefitCPP, income_Tax, sick_Days, holidays, start_Date, end_Date, employeeId, pay_status,total_paid) VALUES (0.0158, 0.0525, 0.15, 7, 10, '2020-11-29', '2020-12-13', 5, FALSE,0);
 
 
 

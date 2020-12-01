@@ -104,7 +104,7 @@
 						<td>$${totalPay}</td>
 					</tr>
 				</table>
-				<a href="/processPayment?payId=${pay.id}"><button type="button" class="btn btn-outline-primary">PAY</button></a>
+				<a href="/processPayment?payId=${pay.id}&totalPaid=${totalPay}"><button type="button" class="btn btn-outline-primary">PAY</button></a>
 			</c:otherwise>
 		</c:choose>
 	</div>

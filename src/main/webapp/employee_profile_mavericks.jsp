@@ -60,6 +60,32 @@
 			</div>
 		</div>
 	</div>
+	
+	<!-- Previous payment list -->
+	<div class="container">
+		<div class="text-right">
+			<span style="float: left;" class="h3 mb-3 font-weight-normal">Previous Payments</span> <br />
+		</div>
+		<table class="table table-hover">
+			<thead class="thead-dark">
+				<tr>
+					<td>Pay Date</td>
+					<td>Total Payment</td>
+				</tr>
+			</thead>
+			<c:forEach var="payment" items="${lastPayments}">
+				<tbody>
+					<tr>
+						<td><fmt:formatDate value="${payment.startDate}"
+									pattern="yyyy-MM-dd" /> - <fmt:formatDate
+									value="${payment.endDate}" pattern="yyyy-MM-dd" /></td></td>
+						<td>${payment.totalPaid}</td>
+					</tr>
+				</tbody>
+			</c:forEach>
+		</table>
+	</div>
+	
 	<div class="container m-5 p-5">
 		<div class="card border-dark">
 			<div class="card-header">
@@ -91,8 +117,8 @@
 			</div>
 		</div>
 	</div>
-
-
+	
+	
 	<!-- Modal -->
 	<div class="modal fade" id="exampleModal" tabindex="-1"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">

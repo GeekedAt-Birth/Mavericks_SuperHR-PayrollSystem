@@ -19,4 +19,7 @@ public interface PayrollDao_Mavericks extends JpaRepository<Pay_Mavericks, Integ
 //	@Query(value = "SELECT * FROM PAY_MAVERICKS WHERE PAY_STATUS=FALSE", nativeQuery = true)
 	@Query(value = "SELECT * FROM PAY_MAVERICKS WHERE ( START_DATE <= CURDATE() AND END_DATE>= CURDATE()) AND PAY_STATUS=FALSE", nativeQuery = true)
 	List<Pay_Mavericks> payPendings(); 
+	
+	@Query(value = "SELECT * FROM PAY_MAVERICKS WHERE EMPLOYEEID=:id AND PAY_STATUS=TRUE", nativeQuery = true)
+	List<Pay_Mavericks> lastPayments(@Param("id")int id);
 }

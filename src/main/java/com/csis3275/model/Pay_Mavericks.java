@@ -28,6 +28,7 @@ public class Pay_Mavericks {
 	private Date endDate;
 	private int employeeID;
 	private boolean payStatus;
+	private double totalPaid;
 
 	// Default Constructor
 	public Pay_Mavericks() {
@@ -35,16 +36,24 @@ public class Pay_Mavericks {
 	}
 
 	// Constructor
-	public Pay_Mavericks(int sickDays, int holidays, Date startDate, Date endDate, int employeeID, boolean payStatus) {
+	public Pay_Mavericks(int sickDays, int holidays, Date startDate, Date endDate, int employeeID, boolean payStatus, double totalPaid) {
 		this.sickDays = sickDays;
 		this.holidays = holidays;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.employeeID = employeeID;
 		this.payStatus = payStatus;
-
+		this.totalPaid = totalPaid;
 	}
 
+
+	public double getTotalPaid() {
+		return totalPaid;
+	}
+
+	public void setTotalPaid(double totalPaid) {
+		this.totalPaid = totalPaid;
+	}
 
 	// Getters and setters
 	public int getId() {
