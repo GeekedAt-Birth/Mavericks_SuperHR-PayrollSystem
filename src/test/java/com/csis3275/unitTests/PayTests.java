@@ -20,7 +20,7 @@ public class PayTests {
 	void setUp() throws Exception {
 		startDate = new Date(120, 10, 1);
 		endDate = new Date(120, 10, 14);
-		payStub = new Pay_Mavericks(10,15,startDate,endDate,1, false);
+		payStub = new Pay_Mavericks(10,15,startDate,endDate,1, false,123);
 	}
 	@Test
 	void testBenefitEI() {
