@@ -37,10 +37,7 @@
 			<table class="table table-striped table-bordered">
 				<tr>
 					<td>Pay Period</td>
-					<td><input type="date" name="startDate"
-						value="<fmt:formatDate value="${pay.startDate}" pattern="yyyy-MM-dd" />" />
-						- <input type="date" name="endDate"
-						value="<fmt:formatDate value="${pay.endDate}" pattern="yyyy-MM-dd" />" /></td>
+					<td>${pay.startDate} - ${pay.endDate}</td>
 				</tr>
 				<tr>
 					<td>Job Title</td>
