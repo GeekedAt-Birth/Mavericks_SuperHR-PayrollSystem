@@ -58,7 +58,7 @@
 					<td><form:input type="text" path="title" /></td>
 				</tr>
 				<tr>
-					<td>SalaryPerDay</td>
+					<td>Salary Per Day</td>
 					<td>$<form:input type="text" path="salaryPerDay" />/day</td>
 				</tr>
 			</table>
