@@ -59,7 +59,7 @@
 				</tr>
 				<tr>
 					<td>SalaryPerDay</td>
-					<td><form:input type="text" path="salaryPerDay" />/day</td>
+					<td>$<form:input type="text" path="salaryPerDay" />/day</td>
 				</tr>
 			</table>
 			<form:button type="submit" class="btn btn-primary">Save</form:button>
